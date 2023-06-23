@@ -20,7 +20,10 @@ class Conexion:
             
     @classmethod
     def obtenerCursor(cls):
-        pass
+        conexion = cls.obtenerConexion()
+        cursor = conexion.cursor()
+        log.debug(f"Cursor obtenido: {cursor}")
+        return cursor
 
     @classmethod
     def obtenerPool(cls):
