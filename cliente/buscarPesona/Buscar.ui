@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>650</width>
-    <height>526</height>
+    <width>765</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -123,15 +123,12 @@ font:77 10pt &quot;Arial Black&quot;;
              </property>
              <item>
               <widget class="QStackedWidget" name="stackedWidget">
-               <widget class="QWidget" name="page_rgistro">
-                <layout class="QVBoxLayout" name="verticalLayout_9"/>
-               </widget>
-               <widget class="QWidget" name="page_buscar">
-                <layout class="QVBoxLayout" name="verticalLayout_6">
+               <widget class="QWidget" name="buscarPersona">
+                <layout class="QVBoxLayout" name="verticalLayout_4">
                  <item>
                   <widget class="QLabel" name="label">
                    <property name="text">
-                    <string> Buscar Persona</string>
+                    <string>Buscar Persona</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -139,7 +136,7 @@ font:77 10pt &quot;Arial Black&quot;;
                   </widget>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_4">
+                  <layout class="QHBoxLayout" name="horizontalLayout_2">
                    <item>
                     <widget class="QLabel" name="label_2">
                      <property name="text">
@@ -151,7 +148,7 @@ font:77 10pt &quot;Arial Black&quot;;
                     <widget class="QLineEdit" name="lineEdit"/>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="pushButton_5">
+                    <widget class="QPushButton" name="pushButton">
                      <property name="minimumSize">
                       <size>
                        <width>120</width>
@@ -166,12 +163,20 @@ font:77 10pt &quot;Arial Black&quot;;
                   </layout>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_5">
+                  <layout class="QHBoxLayout" name="horizontalLayout_4">
                    <item>
                     <widget class="QTableWidget" name="tableWidget">
                      <column>
                       <property name="text">
                        <string>Nombre</string>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>10</pointsize>
+                       </font>
+                      </property>
+                      <property name="textAlignment">
+                       <set>AlignCenter</set>
                       </property>
                      </column>
                      <column>
@@ -204,7 +209,7 @@ font:77 10pt &quot;Arial Black&quot;;
                   </layout>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_2">
+                  <layout class="QHBoxLayout" name="horizontalLayout_3">
                    <item>
                     <spacer name="horizontalSpacer">
                      <property name="orientation">
@@ -219,7 +224,7 @@ font:77 10pt &quot;Arial Black&quot;;
                     </spacer>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="pushButton">
+                    <widget class="QPushButton" name="pushButton_2">
                      <property name="minimumSize">
                       <size>
                        <width>120</width>
@@ -231,20 +236,11 @@ font:77 10pt &quot;Arial Black&quot;;
                      </property>
                     </widget>
                    </item>
-                   <item>
-                    <widget class="QLabel" name="label_18">
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
                   </layout>
                  </item>
                 </layout>
                </widget>
-               <widget class="QWidget" name="page_lista"/>
-               <widget class="QWidget" name="page_estado"/>
-               <widget class="QWidget" name="page_esta"/>
+               <widget class="QWidget" name="page_2"/>
               </widget>
              </item>
             </layout>
