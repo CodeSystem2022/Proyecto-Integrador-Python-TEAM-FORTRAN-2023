@@ -25,8 +25,7 @@ class iniciar:
         self.ventana.bt_actualizar_tabla.clicked.connect(self.actualizarEmpleado)
         self.ventana.bt_actualizar_buscar.clicked.connect(self.buscarActualizarEmpleado)
         self.ventana.bt_buscar_borrar.clicked.connect(self.buscarEliminarEmpleado)
-        
-        
+        self.ventana.bt_eliminar.clicked.connect(self.botonEliminarEmpleado)
         
         # apenas ingresa a la opcion registroPersona carga y muestra la base de datos
         mostrarEmpleados(self)
@@ -112,3 +111,26 @@ class iniciar:
         tabla.setItem(0, 3, QTableWidgetItem(str(dniEncontrado[3])))  
         tabla.setItem(0, 4, QTableWidgetItem(dniEncontrado[4]))  
         tabla.setItem(0, 5, QTableWidgetItem(str(dniEncontrado[5])))
+    # funcionalidad boton eliminar en seccion eliminar empleado
+    def botonEliminarEmpleado(self):
+        tabla = self.ventana.tabla_eliminar
+        
+        # lee los datos de la tabla
+        nombre = tabla.item(0,0).text()
+        apellido = tabla.item(0,1).text()
+        dni = tabla.item(0,2).text()
+        cuit = tabla.item(0,3).text()
+        categoria = tabla.item(0,4).text()
+        sueldo = tabla.item(0,5).text()
+        # instancia de Empleado con los datos cargados
+        datosEmpleado = Empleado(3, nombre, apellido, dni, cuit, categoria, sueldo)
+        # realiza la consulta correspondiente a la base de datos
+        eliminarEmpleado(datosEmpleado)
+        #  limpia los campos de entrada
+        tabla.setItem(0, 0, QTableWidgetItem('')) 
+        tabla.setItem(0, 1, QTableWidgetItem(''))  
+        tabla.setItem(0, 2, QTableWidgetItem(''))  
+        tabla.setItem(0, 3, QTableWidgetItem(''))  
+        tabla.setItem(0, 4, QTableWidgetItem(''))  
+        tabla.setItem(0, 5, QTableWidgetItem(''))
+        self.ventana.eliminar_buscar.setText('')
