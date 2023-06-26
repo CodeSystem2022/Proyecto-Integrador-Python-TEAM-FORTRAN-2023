@@ -83,3 +83,20 @@ def mostrarEmpleados(self):
             print(e)
         conn.commit()
         cursor.close()
+        
+def buscarEmpleado(dni):
+        conn = psycopg2.connect(**datosBD)
+        cursor = conn.cursor()
+        query = '''SELECT * FROM empleados WHERE dni=%s'''
+        try:
+            cursor.execute(query, (dni,))
+            encontrados = cursor.fetchall()
+            if(bool(encontrados)):
+                for empleadoEncontrado in encontrados:
+                    return(empleadoEncontrado)
+            else:
+                return ('null', 'null', 'null', 'null', 'null', 'null')
+        except Exception as e:
+            print(e)
+        conn.commit()
+        cursor.close()
