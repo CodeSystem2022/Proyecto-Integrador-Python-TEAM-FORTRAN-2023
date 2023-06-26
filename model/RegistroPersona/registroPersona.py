@@ -21,6 +21,8 @@ class iniciar:
         
         # asignacion funcionalidad a botones en cada seccion
         self.ventana.bt_agregar.clicked.connect(self.agregarEmpleado)
+        self.ventana.bt_refrescar.clicked.connect(self.seccionMostrarBaseDatos)
+        self.ventana.bt_actualizar_tabla.clicked.connect(self.actualizarEmpleado)
         
         # apenas ingresa a la opcion registroPersona carga y muestra la base de datos
         mostrarEmpleados(self)
@@ -58,4 +60,23 @@ class iniciar:
         self.ventana.reg_cuit.setText('')
         self.ventana.reg_categoria.setText('')
         self.ventana.reg_sueldo.setText('')
+    # funcionalidad para boton actualizar en seccion actualizar
+    def actualizarEmpleado(self):
+        # lee los campos de entrada correspondientes
+        nombre = self.ventana.act_nombre.text()
+        apellido = self.ventana.act_apellido.text()
+        dni = self.ventana.act_dni.text()
+        cuit = self.ventana.act_cuit.text()
+        categoria = self.ventana.act_categoria.text()
+        sueldo = self.ventana.act_sueldo.text()
+        
+        datosEmpleado = Empleado(1, nombre, apellido, dni, cuit, categoria, sueldo)
+        # realiza la consulta correspondiente a la base de datos
+        actualizarEmpleado(datosEmpleado)
     
+        self.ventana.act_nombre.setText('')
+        self.ventana.act_apellido.setText('')
+        self.ventana.act_dni.setText('')
+        self.ventana.act_cuit.setText('')
+        self.ventana.act_categoria.setText('')
+        self.ventana.act_sueldo.setText('')
