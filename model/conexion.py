@@ -3,9 +3,9 @@ import sys
 from logger_base import log
 
 class Conexion:
-    _DATABASE = 'teamfortran'  # Nombre de la base de datos
-    _USERNAME = 'postgres'  # Nombre de usuario de la base de datos
-    _PASSWORD = 'admin'  # Contraseña de la base de datos
+    _DATABASE = 'root'  # Nombre de la base de datos
+    _USERNAME = 'root'  # Nombre de usuario de la base de datos
+    _PASSWORD = 'root'  # Contraseña de la base de datos
     _DB_PORT = '5432'  # Puerto de la base de datos
     _HOST = '127.0.0.1'  # Host de la base de datos
     _MIN_CON = 1
@@ -29,6 +29,17 @@ class Conexion:
     def obtenerPool(cls):
         if cls._pool is None:
             try:
+                cls._pool = pool.SimpleConnectionPool(cls._MIN_CON,
+                                                      cls._MAX_CON,
+                                                      host=cls._HOST,
+                                                      user=cls._USERNAME,
+                                                      password=cls._PASSWORD,
+                                                      database=cls._DATABASE,
+                                                      port=cls._DB_PORT)
+                log.debug(f"Creacion del pool: {cls._pool}")
+                return cls._pool
+            except Exception as e:
+                log.error(f"Error pool: {e}")
                  # Obtener el cursor de la conexión a la base de datos
                 cls._cursor = cls.obtenerConexion().cursor()
                 log.debug(f'Se abrio el cursor: {cls._cursor}')
@@ -37,7 +48,7 @@ class Conexion:
                 log.error(f'Ocurrio un error {e}')
                 sys.exit()
         else:
-            return cls._cursor
+            return cls._pool
 
 
 
