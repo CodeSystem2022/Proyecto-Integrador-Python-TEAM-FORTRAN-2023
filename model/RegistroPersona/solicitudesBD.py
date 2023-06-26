@@ -20,3 +20,16 @@ def insertarEmpleado(empleado):
             print(e)
         conn.commit()
         cursor.close()
+        
+def cantidadEmpleados():
+        conn = psycopg2.connect(**datosBD)
+        cursor = conn.cursor()
+        query = '''SELECT COUNT(*) FROM empleados'''
+        try:
+            cursor.execute(query)
+            respuesta = cursor.fetchone()
+            return respuesta[0]
+        except Exception as e:
+            print(e)
+        conn.commit()
+        cursor.close()
