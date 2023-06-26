@@ -33,3 +33,16 @@ def cantidadEmpleados():
             print(e)
         conn.commit()
         cursor.close()
+        
+def actualizarEmpleado(empleado):
+        conn = psycopg2.connect(**datosBD)
+        cursor = conn.cursor()
+        query = '''UPDATE empleados SET nombre=%s, apellido=%s, dni=%s, cuit=%s, categoria=%s, sueldo=%s WHERE dni=%s'''
+        try:
+            datos = (empleado.nombre, empleado.apellido, empleado.dni,
+                       empleado.cuit, empleado.categoria, empleado.sueldo, empleado.dni)
+            cursor.execute(query, (datos))
+        except Exception as e:
+            print(e)
+        conn.commit()
+        cursor.close()
