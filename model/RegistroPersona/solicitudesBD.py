@@ -1,4 +1,5 @@
 import psycopg2
+from PyQt5.QtWidgets import QTableWidgetItem
 
 datosBD = {
     "dbname" : "",
@@ -54,6 +55,30 @@ def eliminarEmpleado(empleado):
         try:
             # datos = empleado.dni
             cursor.execute(query, (empleado.dni,))
+        except Exception as e:
+            print(e)
+        conn.commit()
+        cursor.close()
+        
+def mostrarEmpleados(self):
+        conn = psycopg2.connect(**datosBD)
+        cursor = conn.cursor()
+        query = '''SELECT * FROM empleados ORDER BY apellido'''
+        try:
+            cursor.execute(query)
+            registros = cursor.fetchall()
+            
+            tabla = self.ventana.tabla_productos
+            tabla.setRowCount(cantidadEmpleados())
+            tabla.setColumnCount(6)
+            
+            for index,registro in enumerate(registros):
+                    tabla.setItem(index, 0, QTableWidgetItem(registro[0])) 
+                    tabla.setItem(index, 1, QTableWidgetItem(registro[1]))  
+                    tabla.setItem(index, 2, QTableWidgetItem(str(registro[2])))  
+                    tabla.setItem(index, 3, QTableWidgetItem(str(registro[3])))  
+                    tabla.setItem(index, 4, QTableWidgetItem(registro[4]))  
+                    tabla.setItem(index, 5, QTableWidgetItem(str(registro[5])))
         except Exception as e:
             print(e)
         conn.commit()
