@@ -46,3 +46,15 @@ def actualizarEmpleado(empleado):
             print(e)
         conn.commit()
         cursor.close()
+    
+def eliminarEmpleado(empleado):
+        conn = psycopg2.connect(**datosBD)
+        cursor = conn.cursor()
+        query = '''DELETE FROM empleados WHERE dni=%s'''
+        try:
+            # datos = empleado.dni
+            cursor.execute(query, (empleado.dni,))
+        except Exception as e:
+            print(e)
+        conn.commit()
+        cursor.close()
