@@ -24,6 +24,8 @@ class iniciar:
         self.ventana.bt_refrescar.clicked.connect(self.seccionMostrarBaseDatos)
         self.ventana.bt_actualizar_tabla.clicked.connect(self.actualizarEmpleado)
         self.ventana.bt_actualizar_buscar.clicked.connect(self.buscarActualizarEmpleado)
+        self.ventana.bt_buscar_borrar.clicked.connect(self.buscarEliminarEmpleado)
+        
         
         
         # apenas ingresa a la opcion registroPersona carga y muestra la base de datos
@@ -93,3 +95,20 @@ class iniciar:
         self.ventana.act_cuit.setText(str(dniEncontrado[3]))
         self.ventana.act_categoria.setText(dniEncontrado[4])
         self.ventana.act_sueldo.setText(str(dniEncontrado[5]))
+    # metodo para buscar empleado en seccion eliminar
+    def buscarEliminarEmpleado(self):
+        # lee el dni buscado
+        dniBuscado = self.ventana.eliminar_buscar.text()
+        # realiza la consulta a la base de datos
+        dniEncontrado = buscarEmpleado(dniBuscado)
+        
+        tabla = self.ventana.tabla_eliminar
+        tabla.setRowCount(1)
+        tabla.setColumnCount(6)
+        # muestra el empleado buscado
+        tabla.setItem(0, 0, QTableWidgetItem(dniEncontrado[0])) 
+        tabla.setItem(0, 1, QTableWidgetItem(dniEncontrado[1]))  
+        tabla.setItem(0, 2, QTableWidgetItem(str(dniEncontrado[2])))  
+        tabla.setItem(0, 3, QTableWidgetItem(str(dniEncontrado[3])))  
+        tabla.setItem(0, 4, QTableWidgetItem(dniEncontrado[4]))  
+        tabla.setItem(0, 5, QTableWidgetItem(str(dniEncontrado[5])))
