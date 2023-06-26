@@ -23,6 +23,8 @@ class iniciar:
         self.ventana.bt_agregar.clicked.connect(self.agregarEmpleado)
         self.ventana.bt_refrescar.clicked.connect(self.seccionMostrarBaseDatos)
         self.ventana.bt_actualizar_tabla.clicked.connect(self.actualizarEmpleado)
+        self.ventana.bt_actualizar_buscar.clicked.connect(self.buscarActualizarEmpleado)
+        
         
         # apenas ingresa a la opcion registroPersona carga y muestra la base de datos
         mostrarEmpleados(self)
@@ -80,3 +82,14 @@ class iniciar:
         self.ventana.act_cuit.setText('')
         self.ventana.act_categoria.setText('')
         self.ventana.act_sueldo.setText('')
+    # funcionalidad boton buscar en seccion actualizar
+    def buscarActualizarEmpleado(self):
+        dniBuscado = self.ventana.act_buscar.text()
+        dniEncontrado = buscarEmpleado(dniBuscado)
+        
+        self.ventana.act_nombre.setText(dniEncontrado[0])
+        self.ventana.act_apellido.setText(dniEncontrado[1])
+        self.ventana.act_dni.setText(str(dniEncontrado[2]))
+        self.ventana.act_cuit.setText(str(dniEncontrado[3]))
+        self.ventana.act_categoria.setText(dniEncontrado[4])
+        self.ventana.act_sueldo.setText(str(dniEncontrado[5]))
