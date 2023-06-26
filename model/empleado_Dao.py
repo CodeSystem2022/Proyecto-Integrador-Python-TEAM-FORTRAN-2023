@@ -1,8 +1,15 @@
+import os
+import sys
+
+# Obtener la ruta base del proyecto
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Agregar la ruta base al sys.path
+sys.path.append(BASE_DIR)
 from logger_base import log
 from database.empleado import Empleado
 from conexion import Conexion
-import os
-import sys
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Definir la clase EmpleadoDao
