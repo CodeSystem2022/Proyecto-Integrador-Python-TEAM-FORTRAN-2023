@@ -31,6 +31,7 @@ class iniciar:
         mostrarEmpleados(self)
         
         app.exec()
+        
     # funcionalidades de botones que llevan a diferentes secciones
     def seccionMostrarBaseDatos(self):
         self.ventana.stackedWidget.setCurrentIndex(0)
@@ -44,6 +45,7 @@ class iniciar:
 
     def seccionEliminar(self):
         self.ventana.stackedWidget.setCurrentIndex(3)
+        
      # metodo para cargar un empleado
     def agregarEmpleado(self):
         nombre = self.ventana.reg_nombre.text()
@@ -63,6 +65,7 @@ class iniciar:
         self.ventana.reg_cuit.setText('')
         self.ventana.reg_categoria.setText('')
         self.ventana.reg_sueldo.setText('')
+    
     # funcionalidad para boton actualizar en seccion actualizar
     def actualizarEmpleado(self):
         # lee los campos de entrada correspondientes
@@ -83,6 +86,7 @@ class iniciar:
         self.ventana.act_cuit.setText('')
         self.ventana.act_categoria.setText('')
         self.ventana.act_sueldo.setText('')
+        
     # funcionalidad boton buscar en seccion actualizar
     def buscarActualizarEmpleado(self):
         dniBuscado = self.ventana.act_buscar.text()
@@ -94,6 +98,7 @@ class iniciar:
         self.ventana.act_cuit.setText(str(dniEncontrado[3]))
         self.ventana.act_categoria.setText(dniEncontrado[4])
         self.ventana.act_sueldo.setText(str(dniEncontrado[5]))
+        
     # metodo para buscar empleado en seccion eliminar
     def buscarEliminarEmpleado(self):
         # lee el dni buscado
@@ -111,6 +116,7 @@ class iniciar:
         tabla.setItem(0, 3, QTableWidgetItem(str(dniEncontrado[3])))  
         tabla.setItem(0, 4, QTableWidgetItem(dniEncontrado[4]))  
         tabla.setItem(0, 5, QTableWidgetItem(str(dniEncontrado[5])))
+        
     # funcionalidad boton eliminar en seccion eliminar empleado
     def botonEliminarEmpleado(self):
         tabla = self.ventana.tabla_eliminar
