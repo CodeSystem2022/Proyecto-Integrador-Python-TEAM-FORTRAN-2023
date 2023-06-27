@@ -7,7 +7,6 @@ from model.logger_base import log
 class Empleado:
     def __init__(self, id_empleado, nombre, apellido, dni, cuit, categoria, sueldo):
         # Constructor de la clase Empleado que recibe los atributos del empleado
-        self._id_empleado = id_empleado
         self._nombre = nombre
         self._apellido = apellido
         self._dni = dni
@@ -18,7 +17,6 @@ class Empleado:
 # Método que retorna una representación en forma de cadena del objeto Empleado
     def __str__(self):
         return f'''
-            id Empleado: {self._id_empleado},
             Nombre: {self._nombre},
             Apellido: {self._apellido},
             DNI: {self._dni},
@@ -26,16 +24,6 @@ class Empleado:
             Categoria: {self._categoria},
             Sueldo: {self._sueldo}
         '''
-
-    #get
-    @property
-    def id_empleado(self):
-        return self._id_empleado 
-    
-    #setter
-    @id_empleado.setter
-    def id_empleado(self, id_empleado):
-        self._id_empleado = id_empleado
 
     @property
     def nombre(self):
@@ -45,6 +33,13 @@ class Empleado:
     def nombre(self, nombre):
         self._nombre = nombre
 
+
+    @staticmethod
+    def validar_nombre(nombre):
+        if not isinstance(nombre, str):
+            raise ValueError("El nombre debe ser una cadena de texto.")
+
+
     @property
     def apellido(self):
         return self._apellido
@@ -53,6 +48,12 @@ class Empleado:
     def apellido(self, apellido):
         self._apellido = apellido
 
+    @staticmethod
+    def validar_apellido(apellido):
+        if not isinstance(apellido, str):
+            raise ValueError("El apellido debe ser una cadena de texto.")
+
+
     @property
     def dni(self):
         return self._dni
@@ -60,6 +61,12 @@ class Empleado:
     @dni.setter
     def dni(self, dni):
         self._dni = dni
+
+    @staticmethod
+    def validar_dni(dni):
+        if not isinstance(dni, int):
+            raise ValueError("El DNI debe ser un número entero.")
+
 
     @property
     def cuit(self):
@@ -84,4 +91,10 @@ class Empleado:
     @sueldo.setter
     def sueldo(self, sueldo):
         self._sueldo = sueldo
+
+        
+    @staticmethod
+    def validar_sueldo(sueldo):
+        if not isinstance(sueldo, float) and not isinstance(sueldo, int):
+            raise ValueError("El sueldo debe ser un número.")
 
