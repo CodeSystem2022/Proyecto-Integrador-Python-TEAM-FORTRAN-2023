@@ -1,99 +1,116 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QFrame, QLabel
-from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QFrame, QLabel,  QDialog, QGridLayout, QLineEdit
+from PyQt5.QtGui import QColor, QPainter, QBrush, QPen
+from PyQt5.QtCore import Qt, QSize
+from PyQt5.QtGui import QFont
 
-class EstadisticaGUI(QMainWindow):
+class FancyFrame(QFrame):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setFrameShape(QFrame.StyledPanel)
+        self.setFrameShadow(QFrame.Raised)
+
+    def paintEvent(self, event):
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.Antialiasing)
+
+        # Establecer color y grosor del borde
+        border_color = QColor(50, 50, 50)
+        border_thickness = 2
+
+        # Establecer el color de fondo
+        background_color = QColor(168, 216, 185)  # Tonos de verde claro pastel
+
+        # Dibujar el fondo de la interfaz
+        painter.setBrush(QBrush(background_color))
+        painter.drawRect(self.rect())
+
+        # Dibujar el recuadro con borde redondeado
+        painter.setPen(QPen(border_color, border_thickness))
+        painter.drawRoundedRect(
+            self.rect().adjusted(border_thickness, border_thickness, -border_thickness, -border_thickness),
+            10,
+            10
+        )
+
+class ModaWindow(QDialog):
     def __init__(self):
         super().__init__()
+        self.setWindowTitle("Calculadora de Moda")
+        self.setGeometry(100, 100, 300, 200)
+        self.setStyleSheet("background-color: #3CB371;")  # Color verde esmeralda
 
-        self.setWindowTitle("Estadistica")
-        self.setGeometry(100, 100, 500, 300)
+        layout = QVBoxLayout()
 
-        central_widget = QWidget()
-        self.setCentralWidget(central_widget)
-        layout = QVBoxLayout(central_widget)
+        label = QLabel("Ingrese los Saldos separados por comas:")
+        label.setStyleSheet("color: white; font-size: 16px; font-weight: bold;")
+        layout.addWidget(label)
 
-        # Título
-        titulo = QLabel("Estadistica", self)
-        titulo.setStyleSheet("font-size: 24px; font-weight: bold;")
-        titulo.setAlignment(Qt.AlignCenter)
-        layout.addWidget(titulo)
+        self.input_line = QLineEdit()
+        layout.addWidget(self.input_line)
 
-        # Frame superior
-        frame_superior = QFrame(self)
-        frame_superior.setStyleSheet("background-color: rgb(0, 0, 0);")
-        frame_superior.setFrameShape(QFrame.StyledPanel)
-        frame_superior.setFrameShadow(QFrame.Raised)
-        layout.addWidget(frame_superior)
+        button = QPushButton("Calcular")
+        button.clicked.connect(self.calcular_moda)
+        button.setStyleSheet("background-color: #01CD01; border-radius: 10px; font-size: 18px; font-weight: bold; padding: 10px; color: white;")
+        layout.addWidget(button)
 
-        layout_superior = QHBoxLayout(frame_superior)
-        layout_superior.setContentsMargins(0, 0, 0, 0)
+        self.result_label = QLabel()
+        self.result_label.setStyleSheet("color: white; font-size: 20px; font-weight: bold; margin-top: 20px;")
+        layout.addWidget(self.result_label)
 
-        bt_moda = QPushButton("Moda", self)
-        bt_moda.setStyleSheet(
-            """
-            QPushButton {
-                background-color: #FF0000;
-                border-radius: 20px;
-                color: #FFFFFF;
-                font-size: 16px;
-            }
-            QPushButton:hover {
-                background-color: #FF9999;
-            }
-            """
-        )
-        layout_superior.addWidget(bt_moda)
+        self.setLayout(layout)
+        self.setFont(QFont("Arial", 12))
 
-        bt_mediana = QPushButton("Mediana", self)
-        bt_mediana.setStyleSheet(
-            """
-            QPushButton {
-                background-color: #00FF00;
-                border-radius: 20px;
-                color: #000000;
-                font-size: 16px;
-            }
-            QPushButton:hover {
-                background-color: #99FF99;
-            }
-            """
-        )
-        layout_superior.addWidget(bt_mediana)
+    def calcular_moda(self):
+        valores = self.input_line.text().split(',')
+        valores = [float(valor) for valor in valores]
 
-        bt_media = QPushButton("Media", self)
-        bt_media.setStyleSheet(
-            """
-            QPushButton {
-                background-color: #0000FF;
-                border-radius: 20px;
-                color: #FFFFFF;
-                font-size: 16px;
-            }
-            QPushButton:hover {
-                background-color: #9999FF;
-            }
-            """
-        )
-        layout_superior.addWidget(bt_media)
+        contador = {}
+        for valor in valores:
+            if valor in contador:
+                contador[valor] += 1
+            else:
+                contador[valor] = 1
 
-        # Resto del contenido de la interfaz
-        frame_contenido = QFrame(self)
-        frame_contenido.setFrameShape(QFrame.StyledPanel)
-        frame_contenido.setFrameShadow(QFrame.Raised)
-        layout.addWidget(frame_contenido)
+        moda = max(contador, key=contador.get)
 
-        layout_contenido = QHBoxLayout(frame_contenido)
-        layout_contenido.setContentsMargins(0, 0, 0, 0)
+        self.result_label.setText(f"Moda: {moda}")
+    
 
-        # Aquí puedes agregar más widgets o elementos de la interfaz
+class MediaWindow(QDialog):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Calculadora de Media")
+        self.setGeometry(100, 100, 300, 200)
+        self.setStyleSheet("background-color: #3CB371;")  # Color verde esmeralda
 
-        self.show()
+        layout = QVBoxLayout()
+
+        label = QLabel("Ingrese los Saldos separados por comas:")
+        label.setStyleSheet("color: white; font-size: 16px; font-weight: bold;")
+        layout.addWidget(label)
+
+        self.input_line = QLineEdit()
+        layout.addWidget(self.input_line)
+
+        button = QPushButton("Calcular")
+        button.clicked.connect(self.calcular_media)
+        button.setStyleSheet("background-color: #18D19C; border-radius: 10px; font-size: 18px; font-weight: bold; padding: 10px; color: white;")
+        layout.addWidget(button)
+
+        self.result_label = QLabel()
+        self.result_label.setStyleSheet("color: white; font-size: 20px; font-weight: bold; margin-top: 20px;")
+        layout.addWidget(self.result_label)
+
+        self.setLayout(layout)
+        self.setFont(QFont("Arial", 12))
 
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    gui = EstadisticaGUI()
-    sys.exit(app.exec_())
+    def calcular_media(self):
+        valores = self.input_line.text().split(',')
+        valores = [float(valor) for valor in valores]
+        media = sum(valores) / len(valores)
+
+        self.result_label.setText(f"Media: {media}")
 
 
