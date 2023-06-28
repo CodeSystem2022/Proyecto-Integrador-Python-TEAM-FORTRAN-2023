@@ -113,4 +113,149 @@ class MediaWindow(QDialog):
 
         self.result_label.setText(f"Media: {media}")
 
+class MedianaWindow(QDialog):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Calculadora de Mediana")
+        self.setGeometry(100, 100, 300, 200)
+        self.setStyleSheet("background-color: #3CB371;")  # Color verde esmeralda
+
+        layout = QVBoxLayout()
+
+        label = QLabel("Ingrese los Saldos separados por comas:")
+        label.setStyleSheet("color: white; font-size: 16px; font-weight: bold;")
+        layout.addWidget(label)
+
+        self.input_line = QLineEdit()
+        layout.addWidget(self.input_line)
+
+        button = QPushButton("Calcular")
+        button.clicked.connect(self.calcular_mediana)
+        button.setStyleSheet(
+            "background-color: #13906C; border-radius: 10px; font-size: 18px; font-weight: bold; padding: 10px; color: white;")
+        layout.addWidget(button)
+
+        self.result_label = QLabel()
+        self.result_label.setStyleSheet("color: white; font-size: 20px; font-weight: bold; margin-top: 20px;")
+        layout.addWidget(self.result_label)
+
+        self.setLayout(layout)
+        self.setFont(QFont("Arial", 12))
+
+    def calcular_mediana(self):
+        valores = self.input_line.text().split(',')
+        valores = [float(valor) for valor in valores]
+        valores.sort()
+
+        n = len(valores)
+        if n % 2 == 0:
+            mediana = (valores[n // 2 - 1] + valores[n // 2]) / 2
+        else:
+            mediana = valores[n // 2]
+
+        self.result_label.setText(f"Mediana: {mediana}")
+
+
+class EstadisticaGUI(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("Calculadora Estadistica")
+        self.setGeometry(100, 100, 500, 300)
+
+        central_widget = QWidget()
+        self.setCentralWidget(central_widget)
+        layout = QVBoxLayout(central_widget)
+
+        # Título
+        titulo = QLabel("Estadistica", self)
+        titulo.setStyleSheet("font-size: 24px; font-weight: bold;")
+        titulo.setAlignment(Qt.AlignCenter)
+        layout.addWidget(titulo)
+
+        # Frame superior
+        frame_superior = FancyFrame(self)  # Usamos nuestro FancyFrame en lugar de QFrame
+        frame_superior.setStyleSheet("background-color: #A8D8B9;")
+        layout.addWidget(frame_superior)
+
+        layout_superior = QHBoxLayout(frame_superior)
+        layout_superior.setContentsMargins(0, 0, 0, 0)
+
+        bt_moda = QPushButton("Moda", self)
+        bt_moda.setStyleSheet(
+            """
+            QPushButton {
+                background-color: #2ECC71;
+                border-radius: 20px;
+                color: #FFFFFF;
+                font-size: 16px;
+            }
+            QPushButton:hover {
+                background-color: #27AE60;
+            }
+            """
+        )
+        layout_superior.addWidget(bt_moda)
+        bt_moda.clicked.connect(self.abrir_moda_window)
+
+        bt_mediana = QPushButton("Mediana", self)
+        bt_mediana.setStyleSheet(
+            """
+            QPushButton {
+                background-color: #2ECC71;
+                border-radius: 20px;
+                color: #FFFFFF;
+                font-size: 16px;
+            }
+            QPushButton:hover {
+                background-color: #27AE60;
+            }
+            """
+        )
+        layout_superior.addWidget(bt_mediana)
+        bt_mediana.clicked.connect(self.abrir_mediana_window)
+
+        bt_media = QPushButton("Media", self)
+        bt_media.setStyleSheet(
+            """
+            QPushButton {
+                background-color: #2ECC71;
+                border-radius: 20px;
+                color: #FFFFFF;
+                font-size: 16px;
+            }
+            QPushButton:hover {
+                background-color: #27AE60;
+            }
+            """
+        )
+        layout_superior.addWidget(bt_media)
+        bt_media.clicked.connect(self.abrir_media_window)
+
+        # Resto del contenido de la interfaz
+        frame_contenido = FancyFrame(self)  # Usamos nuestro FancyFrame en lugar de QFrame
+        layout.addWidget(frame_contenido)
+
+        layout_contenido = QHBoxLayout(frame_contenido)
+        layout_contenido.setContentsMargins(0, 0, 0, 0)
+
+        self.show()
+
+    def abrir_moda_window(self):
+        dialog = ModaWindow()
+        dialog.exec_()
+
+    def abrir_mediana_window(self):
+        dialog = MedianaWindow()
+        dialog.exec_()
+
+    def abrir_media_window(self):
+        dialog = MediaWindow()
+        dialog.exec_()
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    gui = EstadisticaGUI()
+    sys.exit(app.exec_())
 
