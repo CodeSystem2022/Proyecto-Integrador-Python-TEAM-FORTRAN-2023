@@ -38,23 +38,14 @@ class Conexion:
                                                       port=cls._DB_PORT)
                 log.debug(f"Creacion del pool: {cls._pool}")
                 return cls._pool
-            except Exception as e:
-                log.error(f"Error pool: {e}")
-                 # Obtener el cursor de la conexión a la base de datos
-                cls._cursor = cls.obtenerConexion().cursor()
-                log.debug(f'Se abrio el cursor: {cls._cursor}')
-                return cls._cursor
             except Exception as e: 
                 log.error(f'Ocurrio un error {e}')
                 sys.exit()
         else:
             return cls._pool
-
-
-
-
-
-
-
+        
+    @classmethod
+    def liberarConexion(cls, conexion):
+        cls.obtenerConexion().putconn(conexion)
 
 

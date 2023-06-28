@@ -5,7 +5,7 @@ from model.logger_base import log
 
 
 class Empleado:
-    def __init__(self, id_empleado, nombre, apellido, dni, cuit, categoria, sueldo):
+    def __init__(self, nombre, apellido, dni, cuit, categoria, sueldo):
         # Constructor de la clase Empleado que recibe los atributos del empleado
         self._nombre = nombre
         self._apellido = apellido

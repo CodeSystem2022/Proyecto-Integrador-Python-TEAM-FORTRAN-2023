@@ -17,7 +17,7 @@ class EmpleadoDao:
     # Consultas SQL
     _SELECIONAR = 'SELECT * FROM empleado ORDER BY dni'
     _INSERTAR = 'INSERT INTO empleado(nombre, apellido, dni, cuit, categoria, sueldo) VALUES (%s, %s, %s, %s, %s, %s)'
-    _ACTUALIZAR = 'UPDATE empleado SET nombre=%s, apellido=%s, dni=%s, cuit=%s, categoria=%s, sueldo=%s WHERE id_empleado=%s'
+    _ACTUALIZAR = 'UPDATE empleado SET nombre=%s, apellido=%s, dni=%s, cuit=%s, categoria=%s, sueldo=%s WHERE dni=%s'
     _ELIMINAR = 'DELETE FROM empleado WHERE dni=%s '
 
     @classmethod
@@ -31,7 +31,7 @@ class EmpleadoDao:
                 for registro in registros:
                      # Crear objetos Empleado a partir de los registros obtenidos
                     empleado = Empleado(
-                        registro[0], registro[1], registro[2], registro[3], registro[4], registro[5], registro[6])
+                        registro[0], registro[1], registro[2], registro[3], registro[4], registro[5])
                     empleados.append(empleado)
                 return empleados
 
@@ -74,6 +74,30 @@ class EmpleadoDao:
                 cursor.execute(cls._ELIMINAR, valores)
                 log.debug(f'Empleado eliminado {empleado}')
                 return cursor.rowcount
+            
 
+def crear_tabla():
+    query = '''
+    CREATE TABLE IF NOT EXISTS empleado (
+        nombre VARCHAR(100) NOT NULL,
+        apellido VARCHAR(100) NOT NULL,
+        dni VARCHAR(8) NOT NULL,
+        cuit VARCHAR(11) NOT NULL,
+        categoria VARCHAR(100) NOT NULL,
+        sueldo DECIMAL(10, 2) NOT NULL
+    )
+    '''
 
+    with Conexion.obtenerConexion() as conexion:
+        with conexion.cursor() as cursor:
+            cursor.execute(query)
+            log.debug('Tabla empleado creada')
 
+if __name__ == '__main__':
+
+    crear_tabla()
+
+    """
+    empleado1 = Empleado('lucas', 'vizcaino', 44058098, 323232323, True, 50000)
+    EmpleadoDao.insertar(empleado1)
+    """
