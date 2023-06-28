@@ -20,10 +20,7 @@ class Conexion:
             
     @classmethod
     def obtenerCursor(cls):
-        conexion = cls.obtenerConexion()
-        cursor = conexion.cursor()
-        log.debug(f"Cursor obtenido: {cursor}")
-        return cursor
+        pass
 
     @classmethod
     def obtenerPool(cls):
@@ -46,6 +43,9 @@ class Conexion:
         
     @classmethod
     def liberarConexion(cls, conexion):
-        cls.obtenerConexion().putconn(conexion)
+        cls.obtenerPool().putconn(conexion)
 
+    @classmethod
+    def cerrarConexion(cls):
+        cls.obtenerPool().closeall()
 
