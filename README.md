@@ -10,3 +10,5 @@
 - ⚜️ Morales Gaston Abel
 - ⚜️ Pereyra Facundo Ezequiel
 - ⚜️ Peña Matías Nicolas
+ ## Descripcion
+Éste proyecto fue desarrollado en PseInt y Java para luego ser adaptado al lenguaje de Python.
