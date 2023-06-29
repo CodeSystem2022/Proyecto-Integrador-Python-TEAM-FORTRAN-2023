@@ -1,7 +1,12 @@
-    <div id="header" align="center">
-    <img src="https://media.giphy.com/media/2IudUHdI075HL02Pkk/giphy.gif" width="400"/ autoplay>
-    <br>
-    <h1 align="center">
-        Proyecto Integrador-Python-TEAM-FORTRAN-2023 
-    </h1>
-</div>
+ ![Black   Orange Simple Welcome To My Channel Youtube Intro (3)](https://github.com/CodeSystem2022/Proyecto-Integrador-Python-TEAM-FORTRAN-2023/assets/100379618/7b46734c-c76f-478d-a952-d32a434d6191)
+ # Integrantes 
+
+- ⚜️ Calisaya Fernando Daniel
+- ⚜️ Ruiz Paola Del Valle
+- ⚜️ Hidalgo Gabriel
+- ⚜️ Vizcaino Gisela Carina
+- ⚜️ Vizcaino Lucas Ezequiel
+- ⚜️ Morales Castro Danisa
+- ⚜️ Morales Gaston Abel
+- ⚜️ Pereyra Facundo Ezequiel
+- ⚜️ Peña Matías Nicolas
