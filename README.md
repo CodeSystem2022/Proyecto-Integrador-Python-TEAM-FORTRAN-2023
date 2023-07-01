@@ -20,3 +20,11 @@ El proyecto de registrar personas es una aplicación de escritorio en Python que
 Al abrir el programa nos pide datos del usuario para autenticar y verificar la identidad en el sistema. 
 Por otro lado, tambien una contraseña de combinación de caracteres, como letras, números y símbolos, que se solicita al usuario durante el proceso de inicio de sesión, para una medida de seguridad que se utiliza para autenticar y verificar la identidad en el sistema.
 ### Base de datos:
+Almacena de forma segura la información de las personas registradas.Incluye campos como nombre, apellido, fecha de nacimiento, D.N.I, Cuit, Categoria, Sueldo.
+### Registrar:
+Permite al usuario agregar nuevos registros de empleados al sistema. Esto implica recopilar la información necesaria, validarla y almacenarla en la base de datos. Además, puede incluir la generación automática de un identificador único para cada persona registrada.
+### Actualizar:
+Permite buscar empleados en la base de datos utilizando el Nro de D.N.I, esto nos permite ver los datos especificos del empleado en la empresa como nombre, apellido, fecha de nacimiento, D.N.I, Cuit, Categoria, Sueldo.
+### Eliminar:
+ Permite realizar cambios en los registros existentes, como actualizar información personal o eliminar registros de empleados que ya no trabajan en la empresa.
+ ### Regresar al menu:
