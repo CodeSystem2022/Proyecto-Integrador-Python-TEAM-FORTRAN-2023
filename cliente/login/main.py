@@ -15,7 +15,7 @@ class WelcomeScreen(QMainWindow):
         password = self.lineEdit_2.text()
         if len(name) == 0 or len(password) == 0:
             msg_error("Error","No hay datos")
-        elif name == "UTN" and password == "123":
+        elif name == "UTN" and password == "1234":
             self.window_access()
         else:
             msg_error("Error", "Los datos no coinciden")
