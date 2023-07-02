@@ -41,169 +41,7 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,8">
-       <item>
-        <widget class="QFrame" name="frame_superior">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>42</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QFrame{
-backgroud-color: rgb(0, 0, 0);
-}
-
-QPushButton{
-backgroud-color: #000000ff;
-border-radius: 20px;
-}
-
-QPushButton:hover{
-backgroud-color: rgb(61, 61, 61);
-border-radius: 20px;
-}
-</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_10">
-          <item>
-           <widget class="QPushButton" name="bt_menu">
-            <property name="minimumSize">
-             <size>
-              <width>40</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset>
-              <normaloff>../../img/imgRegistroPersona/menu.png</normaloff>../../img/imgRegistroPersona/menu.png</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>20</width>
-              <height>20</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_7">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QPushButton" name="bt_bajar">
-            <property name="minimumSize">
-             <size>
-              <width>40</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset>
-              <normaloff>../../img/imgRegistroPersona/minimizar-signo.png</normaloff>../../img/imgRegistroPersona/minimizar-signo.png</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>20</width>
-              <height>20</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="bt_minimizar">
-            <property name="minimumSize">
-             <size>
-              <width>40</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset>
-              <normaloff>../../img/imgRegistroPersona/minimizar.png</normaloff>../../img/imgRegistroPersona/minimizar.png</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>20</width>
-              <height>20</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="bt_maximizar">
-            <property name="minimumSize">
-             <size>
-              <width>40</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset>
-              <normaloff>../../img/imgRegistroPersona/maximizar.png</normaloff>../../img/imgRegistroPersona/maximizar.png</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>20</width>
-              <height>20</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="bt_cerrar">
-            <property name="minimumSize">
-             <size>
-              <width>40</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset>
-              <normaloff>../../img/imgRegistroPersona/cerrar.png</normaloff>../../img/imgRegistroPersona/cerrar.png</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>20</width>
-              <height>20</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
+      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="8">
        <item>
         <widget class="QFrame" name="frame_contenido">
          <property name="frameShape">
@@ -350,7 +188,7 @@ font: 77.10px &quot;Arial Black&quot;;
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="bt_ajusters">
+              <widget class="QPushButton" name="pushButton">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -358,11 +196,11 @@ font: 77.10px &quot;Arial Black&quot;;
                 </size>
                </property>
                <property name="text">
-                <string>Ajustes</string>
+                <string>  Regresar al menu  </string>
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../../img/imgRegistroPersona/escritura.png</normaloff>../../img/imgRegistroPersona/escritura.png</iconset>
+                 <normaloff>../../img/imgRegistroPersona/regresar_menu.png</normaloff>../../img/imgRegistroPersona/regresar_menu.png</iconset>
                </property>
                <property name="iconSize">
                 <size>

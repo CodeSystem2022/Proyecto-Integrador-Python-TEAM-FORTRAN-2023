@@ -2,7 +2,7 @@ import sys
 from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
 from solicitudesBD import mostrarEmpleados, insertarEmpleado, buscarEmpleado, actualizarEmpleado, eliminarEmpleado
 from database.empleado import Empleado
-from diseñoRegistroPersona import Ui_MainWindow
+from diseñoRegistroPersonaPy import Ui_MainWindow
 
 class Iniciar(QMainWindow, Ui_MainWindow):
     def __init__(self):
