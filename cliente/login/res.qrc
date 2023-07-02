@@ -1,0 +1,10 @@
+<RCC>
+  <qresource prefix="images">
+    <file>login.png</file>
+    <file>img_337531.png</file>
+    <file>asd.png</file>
+    <file>61457.png</file>
+    <file>avatar.png</file>
+    <file>user2.png</file>
+  </qresource>
+</RCC>
