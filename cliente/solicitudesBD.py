@@ -1,5 +1,5 @@
 import psycopg2
-from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt6.QtWidgets import QTableWidgetItem
 
 datosBD = {
     'user': 'postgres',

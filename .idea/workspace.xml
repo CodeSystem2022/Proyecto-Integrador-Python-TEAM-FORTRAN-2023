@@ -6,13 +6,58 @@
   <component name="ChangeListManager">
     <list default="true" id="2622a787-ffb6-410a-986a-d4b3418ba84f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cliente/menuOpciones/menu.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cliente/menuOpciones/menuOpciones.py" beforeDir="false" afterPath="$PROJECT_DIR$/cliente/menuOpciones/menuOpciones.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaz/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaz/Busqueda.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaz/Busqueda.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaz/Ingreso de informacion de personal.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaz/Login-de-inicio.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaz/LoginDeInicio.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaz/LogindeInicio.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaz/Mensajedeentrada.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaz/Mensajedeentradaalsistema.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaz/Mensajedesalida.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaz/Mensajedesalida.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaz/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interfaz/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/estadisticaDeSueldos/diseñoEstadistica.py" beforeDir="false" afterPath="$PROJECT_DIR$/cliente/estadisticaDeSueldos/diseñoEstadistica.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/login/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/login/.idea/Terrones-Digital.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/login/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/login/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/login/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/login/61457.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/login/asd.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/login/avatar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/login/correct.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/login/img_337531.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/login/login.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/login/login.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/login/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/login/menu.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/login/messagebox.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/login/res.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/login/res.qrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/login/user2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/menuOpciones/menuOpciones.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/menuOpciones/menuOpciones.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/menuOpciones/menuOpcionesGUI.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/registroPersona/capa_datos.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/registroPersona/diseñoRegistroPersonaPy.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/registroPersona/diseñoResitroPersona.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/registroPersona/registroPersona.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente/registroPersona/solicitudesBD.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,8 +77,8 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.menuOpciones">
-    <configuration name="menu" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.main (1)">
+    <configuration name="diseñoEstadistica" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Proyecto-Integrador-Python-TEAM-FORTRAN-2023" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -41,11 +86,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cliente/menuOpciones" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cliente/estadisticaDeSueldos" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cliente/menuOpciones/menu.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cliente/estadisticaDeSueldos/diseñoEstadistica.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -54,7 +99,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="menuOpciones" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="loginGUI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Proyecto-Integrador-Python-TEAM-FORTRAN-2023" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -62,11 +107,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cliente/menuOpciones" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cliente/login" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cliente/menuOpciones/menuOpciones.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cliente/login/loginGUI.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -75,7 +120,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="registroPersona" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Proyecto-Integrador-Python-TEAM-FORTRAN-2023" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -83,11 +128,53 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cliente/registroPersona" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cliente" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cliente/registroPersona/registroPersona.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cliente/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Proyecto-Integrador-Python-TEAM-FORTRAN-2023" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cliente/login" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cliente/login/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="menuOpciones (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Proyecto-Integrador-Python-TEAM-FORTRAN-2023" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cliente" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cliente/menuOpciones.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -98,9 +185,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.menuOpciones" />
-        <item itemvalue="Python.menu" />
-        <item itemvalue="Python.registroPersona" />
+        <item itemvalue="Python.main (1)" />
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.loginGUI" />
+        <item itemvalue="Python.diseñoEstadistica" />
+        <item itemvalue="Python.menuOpciones (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -114,5 +203,16 @@
       <updated>1688258762183</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
