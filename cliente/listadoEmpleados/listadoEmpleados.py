@@ -51,19 +51,27 @@ class MainWindow(QMainWindow):
 
     def search_data(self):
         dni = self.line_edit.text()
-        empleado_dao = EmpleadoDao()  # Crear una instancia de EmpleadoDao
-        empleado = empleado_dao.buscar_por_dni(dni)  # Llamar al método en la instancia
-        if empleado:
-            self.table.setRowCount(1)
-            self.table.setItem(0, 0, QTableWidgetItem(empleado.nombre))
-            self.table.setItem(0, 1, QTableWidgetItem(empleado.apellido))
-            self.table.setItem(0, 2, QTableWidgetItem(empleado.dni))
-            self.table.setItem(0, 3, QTableWidgetItem(str(empleado.sueldo)))
+
+        empleado_dao = EmpleadoDao()
+
+        if not dni:
+            empleados = empleado_dao.seleccionar()
         else:
-            self.table.setRowCount(0)
+            empleados = [empleado_dao.buscar_por_dni(dni)]
+
+        self.table.setRowCount(len(empleados))
+
+        for i, empleado in enumerate(empleados):
+            self.table.setItem(i, 0, QTableWidgetItem(empleado.nombre))
+            self.table.setItem(i, 1, QTableWidgetItem(empleado.apellido))
+            self.table.setItem(i, 2, QTableWidgetItem(empleado.dni))
+            self.table.setItem(i, 3, QTableWidgetItem(empleado.cuit))
+            self.table.setItem(i, 4, QTableWidgetItem(empleado.categoria))
+            self.table.setItem(i, 5, QTableWidgetItem(str(empleado.sueldo)))
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
+    window.search_data()
     window.show()
     sys.exit(app.exec_()) 
