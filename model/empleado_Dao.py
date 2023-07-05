@@ -86,6 +86,22 @@ class EmpleadoDao:
                     registro[0], registro[1], registro[2], registro[3], registro[4], registro[5]
                 )
                 print(f"Empleado {index+1}: {empleado}")
+
+
+    @classmethod
+    def buscar_por_dni(cls, dni):
+        # Método para buscar un empleado por su DNI en la base de datos
+        with CursorDelPool() as cursor:
+            consulta = 'SELECT * FROM empleado WHERE dni = %s'
+            cursor.execute(consulta, (dni,))
+            registro = cursor.fetchone()
+            if registro:
+                empleado = Empleado(
+                    registro[0], registro[1], registro[2], registro[3], registro[4], registro[5]
+                )
+                return empleado
+            else:
+                return None
     
     @classmethod
     def obtener_sueldos(cls):
@@ -136,4 +152,7 @@ def crear_tabla():
             cursor.execute(query)
             log.debug('Tabla empleado creada')
 
-    
+if __name__ == '__main__':
+    empleado = Empleado('sa', 'ds', 434, 4343, 'Contratado', 5600)
+
+    EmpleadoDao.insertar(empleado)

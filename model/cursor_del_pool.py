@@ -1,5 +1,8 @@
-from logger_base import log
-from conexion import Conexion
+import os
+import sys
+from model.logger_base import log
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from model.conexion import Conexion
 
 class CursorDelPool:
     def __init__(self):
