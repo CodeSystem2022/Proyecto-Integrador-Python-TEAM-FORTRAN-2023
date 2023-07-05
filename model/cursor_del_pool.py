@@ -24,13 +24,3 @@ class CursorDelPool:
         Conexion.liberarConexion(self._conexion) 
 
 
-if __name__ == '__main__':
-    try:
-        with CursorDelPool() as cursor:
-            # Aquí puedes ejecutar tus operaciones con el cursor
-            cursor.execute("SELECT * FROM empleado")
-            registros = cursor.fetchall()
-            for registro in registros:
-                print(registro)
-    except Exception as e:
-        log.error(f'Ocurrió un error: {e}')
