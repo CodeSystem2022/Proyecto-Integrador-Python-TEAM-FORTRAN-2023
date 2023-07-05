@@ -1,5 +1,7 @@
 import logging as log   
-
+import sys 
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..',)))
 
 # Configurar el nivel de registro y el formato de los mensajes de registro
 
