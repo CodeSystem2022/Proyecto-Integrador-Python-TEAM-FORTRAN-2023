@@ -3,6 +3,7 @@ from PyQt6.QtWidgets import QApplication, QWidget
 from menuOpcionesGUI import Ui_Form
 import registroPersona
 
+from estadisticaDeSueldos.diseñoEstadistica import EstadisticaGUI
 
 class Ui_iniciar(QWidget):
     def __init__(self):
@@ -19,22 +20,20 @@ class Ui_iniciar(QWidget):
         self.show()
 
     def abrir_registro(self):
-        self.hide()
         self.registro_persona = registroPersona.Iniciar()
         self.registro_persona.show()
-
-    def registrar(self):
-        print("registrar")
+        self.hide()
 
     def categoria(self):
         print("categoria")
 
     def estadistica(self):
-        print("estadistica")
+        self.ventana_estadistica = EstadisticaGUI()
+        self.ventana_estadistica.show()
+        self.hide()
 
     def salir(self):
         self.close()
-
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
