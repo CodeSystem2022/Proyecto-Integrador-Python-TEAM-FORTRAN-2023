@@ -1,19 +1,23 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QFrame, QLabel, \
-    QDialog, QGridLayout, QLineEdit
-from PyQt6.QtGui import QColor, QPainter, QBrush, QPen, QFont
-from PyQt6.QtCore import Qt, QSize
+import os
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QFrame, QLabel,  QDialog, QGridLayout, QLineEdit
+from PyQt5.QtGui import QColor, QPainter, QBrush, QPen
+from PyQt5.QtCore import Qt, QSize
+from PyQt5.QtGui import QFont
 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
+from model.empleado_Dao import EmpleadoDao
 
 class FancyFrame(QFrame):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setFrameShape(QFrame.Shape.StyledPanel)
-        self.setFrameShadow(QFrame.Shadow.Raised)
+        self.setFrameShape(QFrame.StyledPanel)
+        self.setFrameShadow(QFrame.Raised)
 
     def paintEvent(self, event):
         painter = QPainter(self)
-        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+        painter.setRenderHint(QPainter.Antialiasing)
 
         # Establecer color y grosor del borde
         border_color = QColor(50, 50, 50)
@@ -34,7 +38,6 @@ class FancyFrame(QFrame):
             10
         )
 
-
 class ModaWindow(QDialog):
     def __init__(self):
         super().__init__()
@@ -44,17 +47,14 @@ class ModaWindow(QDialog):
 
         layout = QVBoxLayout()
 
-        label = QLabel("Ingrese los Saldos separados por comas:")
+        label = QLabel("Calculo de la Moda de todos los sueldos:")
         label.setStyleSheet("color: white; font-size: 16px; font-weight: bold;")
         layout.addWidget(label)
 
-        self.input_line = QLineEdit()
-        layout.addWidget(self.input_line)
 
         button = QPushButton("Calcular")
         button.clicked.connect(self.calcular_moda)
-        button.setStyleSheet(
-            "background-color: #01CD01; border-radius: 10px; font-size: 18px; font-weight: bold; padding: 10px; color: white;")
+        button.setStyleSheet("background-color: #01CD01; border-radius: 10px; font-size: 18px; font-weight: bold; padding: 10px; color: white;")
         layout.addWidget(button)
 
         self.result_label = QLabel()
@@ -65,20 +65,10 @@ class ModaWindow(QDialog):
         self.setFont(QFont("Arial", 12))
 
     def calcular_moda(self):
-        valores = self.input_line.text().split(',')
-        valores = [float(valor) for valor in valores]
+        sueldos = EmpleadoDao.calcular_moda()
 
-        contador = {}
-        for valor in valores:
-            if valor in contador:
-                contador[valor] += 1
-            else:
-                contador[valor] = 1
-
-        moda = max(contador, key=contador.get)
-
-        self.result_label.setText(f"Moda: {moda}")
-
+        self.result_label.setText(f"Moda: {sueldos}")
+    
 
 class MediaWindow(QDialog):
     def __init__(self):
@@ -89,17 +79,14 @@ class MediaWindow(QDialog):
 
         layout = QVBoxLayout()
 
-        label = QLabel("Ingrese los Saldos separados por comas:")
+        label = QLabel("Calculo de la Media de todos los sueldos:")
         label.setStyleSheet("color: white; font-size: 16px; font-weight: bold;")
         layout.addWidget(label)
 
-        self.input_line = QLineEdit()
-        layout.addWidget(self.input_line)
 
         button = QPushButton("Calcular")
         button.clicked.connect(self.calcular_media)
-        button.setStyleSheet(
-            "background-color: #18D19C; border-radius: 10px; font-size: 18px; font-weight: bold; padding: 10px; color: white;")
+        button.setStyleSheet("background-color: #18D19C; border-radius: 10px; font-size: 18px; font-weight: bold; padding: 10px; color: white;")
         layout.addWidget(button)
 
         self.result_label = QLabel()
@@ -109,13 +96,11 @@ class MediaWindow(QDialog):
         self.setLayout(layout)
         self.setFont(QFont("Arial", 12))
 
+
     def calcular_media(self):
-        valores = self.input_line.text().split(',')
-        valores = [float(valor) for valor in valores]
-        media = sum(valores) / len(valores)
+        sueldos = EmpleadoDao.calcular_media()
 
-        self.result_label.setText(f"Media: {media}")
-
+        self.result_label.setText(f"Media: {sueldos}")
 
 class MedianaWindow(QDialog):
     def __init__(self):
@@ -126,12 +111,10 @@ class MedianaWindow(QDialog):
 
         layout = QVBoxLayout()
 
-        label = QLabel("Ingrese los Saldos separados por comas:")
+        label = QLabel("Calculo de la Mediana de todos los sueldos:")
         label.setStyleSheet("color: white; font-size: 16px; font-weight: bold;")
         layout.addWidget(label)
 
-        self.input_line = QLineEdit()
-        layout.addWidget(self.input_line)
 
         button = QPushButton("Calcular")
         button.clicked.connect(self.calcular_mediana)
@@ -147,17 +130,9 @@ class MedianaWindow(QDialog):
         self.setFont(QFont("Arial", 12))
 
     def calcular_mediana(self):
-        valores = self.input_line.text().split(',')
-        valores = [float(valor) for valor in valores]
-        valores.sort()
+        sueldos = EmpleadoDao.calcular_mediana()
 
-        n = len(valores)
-        if n % 2 == 0:
-            mediana = (valores[n // 2 - 1] + valores[n // 2]) / 2
-        else:
-            mediana = valores[n // 2]
-
-        self.result_label.setText(f"Mediana: {mediana}")
+        self.result_label.setText(f"Mediana: {sueldos}")
 
 
 class EstadisticaGUI(QMainWindow):
@@ -174,7 +149,7 @@ class EstadisticaGUI(QMainWindow):
         # Título
         titulo = QLabel("Estadistica", self)
         titulo.setStyleSheet("font-size: 24px; font-weight: bold;")
-        titulo.setAlignment(Qt.Alignment.AlignCenter)
+        titulo.setAlignment(Qt.AlignCenter)
         layout.addWidget(titulo)
 
         # Frame superior
@@ -261,4 +236,6 @@ class EstadisticaGUI(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     gui = EstadisticaGUI()
-    sys.exit(app.exec_())
+    sys.exit(app.exec_())  
+
+    
