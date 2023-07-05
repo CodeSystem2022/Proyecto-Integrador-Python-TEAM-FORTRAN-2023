@@ -5,7 +5,6 @@ from database.empleado import Empleado
 from diseñoRegistroPersonaPy import Ui_MainWindow
 import menuOpciones
 
-
 class Iniciar(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(Iniciar, self).__init__()
