@@ -3,6 +3,7 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
 from solicitudesBD import mostrarEmpleados, insertarEmpleado, buscarEmpleado, actualizarEmpleado, eliminarEmpleado
 from database.empleado import Empleado
 from diseñoRegistroPersonaPy import Ui_MainWindow
+import menuOpciones
 
 class Iniciar(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -19,6 +20,7 @@ class Iniciar(QMainWindow, Ui_MainWindow):
         self.ventana.bt_registrar.clicked.connect(self.seccionRegistrar)
         self.ventana.bt_actualizar.clicked.connect(self.seccionActualizar)
         self.ventana.bt_eliminar_2.clicked.connect(self.seccionEliminar)
+        self.ventana.pushButton.clicked.connect(self.seccionMenu)
 
         self.ventana.bt_agregar.clicked.connect(self.agregarEmpleado)
         self.ventana.bt_refrescar.clicked.connect(self.seccionMostrarBaseDatos)
@@ -44,6 +46,11 @@ class Iniciar(QMainWindow, Ui_MainWindow):
 
     def seccionEliminar(self):
         self.ventana.stackedWidget.setCurrentIndex(3)
+
+    def seccionMenu(self):
+        self.close()
+        self.menu_principal = menuOpciones.Ui_iniciar()
+        self.menu_principal.show()
 
     def agregarEmpleado(self):
         nombre = self.ventana.reg_nombre.text()
@@ -126,7 +133,6 @@ class Iniciar(QMainWindow, Ui_MainWindow):
         tabla.setItem(0, 4, QTableWidgetItem(''))
         tabla.setItem(0, 5, QTableWidgetItem(''))
         self.ventana.eliminar_buscar.setText('')
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
