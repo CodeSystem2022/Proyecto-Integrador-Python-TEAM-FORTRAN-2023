@@ -5,6 +5,11 @@ from PyQt6.QtGui import QColor, QPainter, QBrush, QPen, QFont
 from PyQt6.QtCore import Qt, QSize
 
 
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
+from model.empleado_Dao import EmpleadoDao
+
 class FancyFrame(QFrame):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -44,12 +49,10 @@ class ModaWindow(QDialog):
 
         layout = QVBoxLayout()
 
-        label = QLabel("Ingrese los Saldos separados por comas:")
+        label = QLabel("Calculo de la Moda de todos los sueldos:")
         label.setStyleSheet("color: white; font-size: 16px; font-weight: bold;")
         layout.addWidget(label)
 
-        self.input_line = QLineEdit()
-        layout.addWidget(self.input_line)
 
         button = QPushButton("Calcular")
         button.clicked.connect(self.calcular_moda)
@@ -65,19 +68,13 @@ class ModaWindow(QDialog):
         self.setFont(QFont("Arial", 12))
 
     def calcular_moda(self):
-        valores = self.input_line.text().split(',')
-        valores = [float(valor) for valor in valores]
+        sueldos = EmpleadoDao.calcular_moda()
 
-        contador = {}
-        for valor in valores:
-            if valor in contador:
-                contador[valor] += 1
-            else:
-                contador[valor] = 1
 
         moda = max(contador, key=contador.get)
 
         self.result_label.setText(f"Moda: {moda}")
+
 
 
 class MediaWindow(QDialog):
@@ -89,12 +86,10 @@ class MediaWindow(QDialog):
 
         layout = QVBoxLayout()
 
-        label = QLabel("Ingrese los Saldos separados por comas:")
+        label = QLabel("Calculo de la Media de todos los sueldos:")
         label.setStyleSheet("color: white; font-size: 16px; font-weight: bold;")
         layout.addWidget(label)
 
-        self.input_line = QLineEdit()
-        layout.addWidget(self.input_line)
 
         button = QPushButton("Calcular")
         button.clicked.connect(self.calcular_media)
@@ -110,11 +105,9 @@ class MediaWindow(QDialog):
         self.setFont(QFont("Arial", 12))
 
     def calcular_media(self):
-        valores = self.input_line.text().split(',')
-        valores = [float(valor) for valor in valores]
-        media = sum(valores) / len(valores)
+        sueldos = EmpleadoDao.calcular_media()
 
-        self.result_label.setText(f"Media: {media}")
+        self.result_label.setText(f"Media: {sueldos}")
 
 
 class MedianaWindow(QDialog):
@@ -126,12 +119,10 @@ class MedianaWindow(QDialog):
 
         layout = QVBoxLayout()
 
-        label = QLabel("Ingrese los Saldos separados por comas:")
+        label = QLabel("Calculo de la Mediana de todos los sueldos:")
         label.setStyleSheet("color: white; font-size: 16px; font-weight: bold;")
         layout.addWidget(label)
 
-        self.input_line = QLineEdit()
-        layout.addWidget(self.input_line)
 
         button = QPushButton("Calcular")
         button.clicked.connect(self.calcular_mediana)
@@ -147,17 +138,9 @@ class MedianaWindow(QDialog):
         self.setFont(QFont("Arial", 12))
 
     def calcular_mediana(self):
-        valores = self.input_line.text().split(',')
-        valores = [float(valor) for valor in valores]
-        valores.sort()
+        sueldos = EmpleadoDao.calcular_mediana()
 
-        n = len(valores)
-        if n % 2 == 0:
-            mediana = (valores[n // 2 - 1] + valores[n // 2]) / 2
-        else:
-            mediana = valores[n // 2]
-
-        self.result_label.setText(f"Mediana: {mediana}")
+        self.result_label.setText(f"Mediana: {sueldos}")
 
 
 class EstadisticaGUI(QMainWindow):

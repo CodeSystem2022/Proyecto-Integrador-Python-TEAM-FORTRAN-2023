@@ -1,6 +1,10 @@
 from psycopg2 import pool
 import sys
-from logger_base import log
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..',)))
+
+from model.logger_base import log
 
 class Conexion:
     _DATABASE = 'test_bd'
