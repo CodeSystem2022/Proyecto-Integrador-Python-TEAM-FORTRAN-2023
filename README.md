@@ -50,4 +50,10 @@ Inicie el servidor
 
 Para tener asistencia, envíe un correo electrónico a TeamFortan@gmail.com 
 
-![Black and White Geometric Tech Logo](https://github.com/CodeSystem2022/Proyecto-Integrador-Python-TEAM-FORTRAN-2023/assets/100379618/51527e8b-17c3-4265-a07c-407478948eac)
+
+![Diseño sin título (1)](https://github.com/CodeSystem2022/Proyecto-Integrador-Python-TEAM-FORTRAN-2023/assets/100379618/6e86c830-549e-40eb-b28f-9a04f46f7593)
+
+
+
+
+
