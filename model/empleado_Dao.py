@@ -1,16 +1,16 @@
 import os
+import statistics
 import sys
-
+from logger_base import log
+from database.empleado import Empleado
+from conexion import Conexion
+from cursor_del_pool import CursorDelPool
 
 # Obtener la ruta base del proyecto
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Agregar la ruta base al sys.path
 sys.path.append(BASE_DIR)
-from model.logger_base import log
-from database.empleado import Empleado
-from model.conexion import Conexion
-from model.cursor_del_pool import CursorDelPool
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -21,6 +21,7 @@ class EmpleadoDao:
     _INSERTAR = 'INSERT INTO empleado(nombre, apellido, dni, cuit, categoria, sueldo) VALUES (%s, %s, %s, %s, %s, %s)'
     _ACTUALIZAR = 'UPDATE empleado SET nombre=%s, apellido=%s, dni=%s, cuit=%s, categoria=%s, sueldo=%s WHERE dni=%s'
     _ELIMINAR = 'DELETE FROM empleado WHERE dni=%s '
+    _MOSTRAR = 'SELECT * FROM empleado ORDER BY apellido'
 
     @classmethod
     def seleccionar(cls):
@@ -72,7 +73,67 @@ class EmpleadoDao:
             cursor.execute(cls._ELIMINAR, valores)
             log.debug(f'Empleado eliminado {empleado}')
             return cursor.rowcount
-            
+
+
+    @classmethod
+    def mostrar(cls):
+        with CursorDelPool() as cursor:
+            cursor.execute(cls._MOSTRAR)
+            registro = cursor.fetchall()
+            for index, registro in enumerate(registro):
+                empleado = Empleado(
+                    registro[0], registro[1], registro[2], registro[3], registro[4], registro[5]
+                )
+                print(f"Empleado {index+1}: {empleado}")
+
+
+    @classmethod
+    def buscar_por_dni(cls, dni):
+        # Método para buscar un empleado por su DNI en la base de datos
+        with CursorDelPool() as cursor:
+            consulta = 'SELECT * FROM empleado WHERE dni = %s'
+            cursor.execute(consulta, (dni,))
+            registro = cursor.fetchone()
+            if registro:
+                empleado = Empleado(
+                    registro[0], registro[1], registro[2], registro[3], registro[4], registro[5]
+                )
+                return empleado
+            else:
+                return None
+    
+    @classmethod
+    def obtener_sueldos(cls):
+        with CursorDelPool() as cursor:
+            cursor.execute(cls._SELECCIONAR)
+            registros = cursor.fetchall()
+            sueldos = [registro[5] for registro in registros]
+            return sueldos
+
+    @classmethod
+    def calcular_moda(cls):
+        sueldos = cls.obtener_sueldos()
+        if sueldos:
+            return statistics.mode(sueldos)
+        else:
+            return None
+
+    @classmethod
+    def calcular_mediana(cls):
+        sueldos = cls.obtener_sueldos()
+        if sueldos:
+            return statistics.median(sueldos)
+        else:
+            return None
+
+    @classmethod
+    def calcular_media(cls):
+        sueldos = cls.obtener_sueldos()
+        if sueldos:
+            return statistics.mean(sueldos)
+        else:
+            return None
+
 
 def crear_tabla():
     query = '''
@@ -90,13 +151,3 @@ def crear_tabla():
         with conexion.cursor() as cursor:
             cursor.execute(query)
             log.debug('Tabla empleado creada')
-
-if __name__ == '__main__':
-
-
-    empleado3 = Empleado('gise32', 'vizcaino323', 44058098, 3232323223, True, 5000320)
-    empleado2 = Empleado('gise32', 'vizcaino323', 44058098, 3232323223, True, 5000320)
-    EmpleadoDao.insertar(empleado2)
-    EmpleadoDao.insertar(empleado3)
-
- 

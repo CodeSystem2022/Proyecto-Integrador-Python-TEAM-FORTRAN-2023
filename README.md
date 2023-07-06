@@ -15,6 +15,10 @@ La dinámica del grupo se basa en la interacción y la participación activa de 
 - ⚜️ Vizcaino Gisela Carina
 ## Descripcion del Proyecto
 El proyecto de registrar personas es una aplicación de escritorio en Python que permite almacenar y gestionar la información de trabajadores en una base de datos. El objetivo principal es crear un registro centralizado de manera confiable, para el control y gestión eficiente del personal en una empresa. 
+## Características
+- Datos de identificación
+- Información personal
+
 ## Estructura
 ### Interfaz de usuario:
 Al abrir el programa nos pide datos del usuario para autenticar y verificar la identidad en el sistema. 
@@ -28,3 +32,30 @@ Permite buscar empleados en la base de datos utilizando el Nro de D.N.I, esto no
 ### Eliminar:
  Permite realizar cambios en los registros existentes, como actualizar información personal o eliminar registros de empleados que ya no trabajan en la empresa.
  ### Regresar al menu:
+Nos permite regresar al menu principal para seguir trabjando o realizar algun otro cambio
+### Salir
+Una vez que finalizamos de hacer cambios salimos del programa
+ ## Ejecutar localmente
+
+Clonar el proyecto
+
+```bash
+  https://github.com/CodeSystem2022/Proyecto-Integrador-Python-TEAM-FORTRAN-2023.git
+```
+
+Abrir el proyecto en Python
+
+
+Inicie el servidor
+
+## Support
+
+Para tener asistencia, envíe un correo electrónico a TeamFortan@gmail.com 
+
+
+![Diseño sin título (1)](https://github.com/CodeSystem2022/Proyecto-Integrador-Python-TEAM-FORTRAN-2023/assets/100379618/6e86c830-549e-40eb-b28f-9a04f46f7593)
+
+
+
+
+
