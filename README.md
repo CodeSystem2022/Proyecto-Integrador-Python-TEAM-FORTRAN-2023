@@ -32,7 +32,9 @@ Permite buscar empleados en la base de datos utilizando el Nro de D.N.I, esto no
 ### Eliminar:
  Permite realizar cambios en los registros existentes, como actualizar información personal o eliminar registros de empleados que ya no trabajan en la empresa.
  ### Regresar al menu:
-
+Nos permite regresar al menu principal para seguir trabjando o realizar algun otro cambio
+### Salir
+Una vez que finalizamos de hacer cambios salimos del programa
  ## Ejecutar localmente
 
 Clonar el proyecto
