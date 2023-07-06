@@ -1,17 +1,15 @@
 import os
 import sys
-
+from logger_base import log
+from database.empleado import Empleado
+from conexion import Conexion
+from cursor_del_pool import CursorDelPool
 
 # Obtener la ruta base del proyecto
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Agregar la ruta base al sys.path
 sys.path.append(BASE_DIR)
-from model.logger_base import log
-from database.empleado import Empleado
-from model.conexion import Conexion
-from model.cursor_del_pool import CursorDelPool
-
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Definir la clase EmpleadoDao
@@ -72,6 +70,8 @@ class EmpleadoDao:
             cursor.execute(cls._ELIMINAR, valores)
             log.debug(f'Empleado eliminado {empleado}')
             return cursor.rowcount
+
+
             
 
 def crear_tabla():
@@ -92,7 +92,7 @@ def crear_tabla():
             log.debug('Tabla empleado creada')
 
 if __name__ == '__main__':
-
+    crear_tabla()
 
     empleado3 = Empleado('gise32', 'vizcaino323', 44058098, 3232323223, True, 5000320)
     empleado2 = Empleado('gise32', 'vizcaino323', 44058098, 3232323223, True, 5000320)
