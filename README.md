@@ -18,8 +18,7 @@ El proyecto de registrar personas es una aplicación de escritorio en Python que
 ## Características
 - Datos de identificación
 - Información personal
-- Datos de contacto
-- Información financiera
+
 ## Estructura
 ### Interfaz de usuario:
 Al abrir el programa nos pide datos del usuario para autenticar y verificar la identidad en el sistema. 
