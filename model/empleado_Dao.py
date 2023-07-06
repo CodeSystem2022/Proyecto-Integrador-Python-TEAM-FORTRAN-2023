@@ -1,4 +1,5 @@
 import os
+import statistics
 import sys
 from logger_base import log
 from database.empleado import Empleado
@@ -150,9 +151,3 @@ def crear_tabla():
         with conexion.cursor() as cursor:
             cursor.execute(query)
             log.debug('Tabla empleado creada')
-
-if __name__ == '__main__':
-
-    empleado = Empleado('sa', 'ds', 434, 4343, 'Contratado', 5600)
-
-    EmpleadoDao.insertar(empleado)
