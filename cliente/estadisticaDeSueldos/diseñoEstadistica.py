@@ -1,9 +1,10 @@
 import sys
-import os
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QFrame, QLabel,  QDialog, QGridLayout, QLineEdit
-from PyQt5.QtGui import QColor, QPainter, QBrush, QPen
-from PyQt5.QtCore import Qt, QSize
-from PyQt5.QtGui import QFont
+from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QFrame, QLabel, \
+    QDialog, QGridLayout, QLineEdit
+from PyQt6.QtGui import QColor, QPainter, QBrush, QPen, QFont
+from PyQt6.QtCore import Qt, QSize
+
+
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
@@ -12,12 +13,12 @@ from model.empleado_Dao import EmpleadoDao
 class FancyFrame(QFrame):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setFrameShape(QFrame.StyledPanel)
-        self.setFrameShadow(QFrame.Raised)
+        self.setFrameShape(QFrame.Shape.StyledPanel)
+        self.setFrameShadow(QFrame.Shadow.Raised)
 
     def paintEvent(self, event):
         painter = QPainter(self)
-        painter.setRenderHint(QPainter.Antialiasing)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
 
         # Establecer color y grosor del borde
         border_color = QColor(50, 50, 50)
@@ -38,6 +39,7 @@ class FancyFrame(QFrame):
             10
         )
 
+
 class ModaWindow(QDialog):
     def __init__(self):
         super().__init__()
@@ -54,7 +56,8 @@ class ModaWindow(QDialog):
 
         button = QPushButton("Calcular")
         button.clicked.connect(self.calcular_moda)
-        button.setStyleSheet("background-color: #01CD01; border-radius: 10px; font-size: 18px; font-weight: bold; padding: 10px; color: white;")
+        button.setStyleSheet(
+            "background-color: #01CD01; border-radius: 10px; font-size: 18px; font-weight: bold; padding: 10px; color: white;")
         layout.addWidget(button)
 
         self.result_label = QLabel()
@@ -67,8 +70,12 @@ class ModaWindow(QDialog):
     def calcular_moda(self):
         sueldos = EmpleadoDao.calcular_moda()
 
-        self.result_label.setText(f"Moda: {sueldos}")
-    
+
+        moda = max(contador, key=contador.get)
+
+        self.result_label.setText(f"Moda: {moda}")
+
+
 
 class MediaWindow(QDialog):
     def __init__(self):
@@ -86,7 +93,8 @@ class MediaWindow(QDialog):
 
         button = QPushButton("Calcular")
         button.clicked.connect(self.calcular_media)
-        button.setStyleSheet("background-color: #18D19C; border-radius: 10px; font-size: 18px; font-weight: bold; padding: 10px; color: white;")
+        button.setStyleSheet(
+            "background-color: #18D19C; border-radius: 10px; font-size: 18px; font-weight: bold; padding: 10px; color: white;")
         layout.addWidget(button)
 
         self.result_label = QLabel()
@@ -96,11 +104,11 @@ class MediaWindow(QDialog):
         self.setLayout(layout)
         self.setFont(QFont("Arial", 12))
 
-
     def calcular_media(self):
         sueldos = EmpleadoDao.calcular_media()
 
         self.result_label.setText(f"Media: {sueldos}")
+
 
 class MedianaWindow(QDialog):
     def __init__(self):
@@ -149,7 +157,7 @@ class EstadisticaGUI(QMainWindow):
         # Título
         titulo = QLabel("Estadistica", self)
         titulo.setStyleSheet("font-size: 24px; font-weight: bold;")
-        titulo.setAlignment(Qt.AlignCenter)
+        titulo.setAlignment(Qt.Alignment.AlignCenter)
         layout.addWidget(titulo)
 
         # Frame superior
@@ -236,6 +244,4 @@ class EstadisticaGUI(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     gui = EstadisticaGUI()
-    sys.exit(app.exec_())  
-
-    
+    sys.exit(app.exec_())

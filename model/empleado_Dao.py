@@ -1,17 +1,15 @@
 import os
 import sys
-
+from logger_base import log
+from database.empleado import Empleado
+from conexion import Conexion
+from cursor_del_pool import CursorDelPool
 
 # Obtener la ruta base del proyecto
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Agregar la ruta base al sys.path
 sys.path.append(BASE_DIR)
-from model.logger_base import log
-from database.empleado import Empleado
-from model.conexion import Conexion
-from model.cursor_del_pool import CursorDelPool
-import statistics
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -135,6 +133,7 @@ class EmpleadoDao:
         else:
             return None
 
+
 def crear_tabla():
     query = '''
     CREATE TABLE IF NOT EXISTS empleado (
@@ -153,6 +152,7 @@ def crear_tabla():
             log.debug('Tabla empleado creada')
 
 if __name__ == '__main__':
+
     empleado = Empleado('sa', 'ds', 434, 4343, 'Contratado', 5600)
 
     EmpleadoDao.insertar(empleado)
