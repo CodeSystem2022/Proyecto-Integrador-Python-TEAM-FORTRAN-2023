@@ -1,17 +1,17 @@
 from psycopg2 import pool
 import sys
 import os
+from urllib.parse import urlparse
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..',)))
 
 from model.logger_base import log
 
 class Conexion:
-    _DATABASE = 'test_bd'
-    _USERNAME = 'postgres'
-    _PASSWORD = 'admin'
+    _DATABASE = 'rootdatabase'
+    _USERNAME = 'root'
+    _PASSWORD = 'pFoxWiP0l6uGqYfT0VuMxMSSY8wa7Xg2'
     _DB_PORT = '5432'
-    _HOST = '127.0.0.1'
     _MIN_CON = 1
     _MAX_CON = 5
     _pool = None
@@ -30,13 +30,17 @@ class Conexion:
     def obtenerPool(cls):
         if cls._pool is None:
             try:
+                external_db_url = 'postgres://root:pFoxWiP0l6uGqYfT0VuMxMSSY8wa7Xg2@dpg-cij0vt95rnut2s9uuqfg-a.oregon-postgres.render.com/rootdatabase'
+
+                url_parts = urlparse(external_db_url)
+
                 cls._pool = pool.SimpleConnectionPool(cls._MIN_CON,
-                                                      cls._MAX_CON,
-                                                      host=cls._HOST,
-                                                      user=cls._USERNAME,
-                                                      password=cls._PASSWORD,
-                                                      database=cls._DATABASE,
-                                                      port=cls._DB_PORT)
+                                                      host=url_parts.hostname,
+                                                      port=url_parts.port,
+                                                      user=url_parts.username,
+                                                      password=url_parts.password,
+                                                      database=url_parts.path.lstrip('/'),
+                                                      maxconn=5)
                 log.debug(f"Creacion del pool: {cls._pool}")
                 return cls._pool
             except Exception as e: 

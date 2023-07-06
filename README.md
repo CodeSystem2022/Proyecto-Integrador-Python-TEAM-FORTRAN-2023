@@ -32,7 +32,9 @@ Permite buscar empleados en la base de datos utilizando el Nro de D.N.I, esto no
 ### Eliminar:
  Permite realizar cambios en los registros existentes, como actualizar información personal o eliminar registros de empleados que ya no trabajan en la empresa.
  ### Regresar al menu:
-
+Nos permite regresar al menu principal para seguir trabjando o realizar algun otro cambio
+### Salir
+Una vez que finalizamos de hacer cambios salimos del programa
  ## Ejecutar localmente
 
 Clonar el proyecto
@@ -50,4 +52,10 @@ Inicie el servidor
 
 Para tener asistencia, envíe un correo electrónico a TeamFortan@gmail.com 
 
-![Black and White Geometric Tech Logo](https://github.com/CodeSystem2022/Proyecto-Integrador-Python-TEAM-FORTRAN-2023/assets/100379618/51527e8b-17c3-4265-a07c-407478948eac)
+
+![Diseño sin título (1)](https://github.com/CodeSystem2022/Proyecto-Integrador-Python-TEAM-FORTRAN-2023/assets/100379618/6e86c830-549e-40eb-b28f-9a04f46f7593)
+
+
+
+
+
