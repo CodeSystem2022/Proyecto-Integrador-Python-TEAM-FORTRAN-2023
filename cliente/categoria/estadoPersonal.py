@@ -1,8 +1,13 @@
 import sys
+
+import os
+import subprocess
 from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox
 from formulario import Ui_MainWindowfrom
 from model.empleado_Dao import EmpleadoDao
-from Recibo import ReciboSueldo
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
 
 
 class Formulario(QMainWindow, Ui_MainWindowfrom):
@@ -16,10 +21,12 @@ class Formulario(QMainWindow, Ui_MainWindowfrom):
         # Botones
         self.bt_buscar.clicked.connect(self.search_data)
 
+
     # Funciones
     def search_data(self):
         dni_a_buscar = self.in_dni.text()
         empleado = EmpleadoDao.buscar_por_dni(dni_a_buscar)
+
         if empleado:
             print("Empleado encontrado:", empleado)  # Mensaje de depuración
             # Obtener los datos del empleado
@@ -38,7 +45,9 @@ class Formulario(QMainWindow, Ui_MainWindowfrom):
         else:
             QMessageBox.warning(self, "Error", "Empleado no encontrado.")
 
+
 if __name__ == '__main__':
+    llamarRecibo()
     app = QApplication([])
     window = Formulario()
     window.show()

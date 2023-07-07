@@ -1,5 +1,6 @@
 import sys
 from PyQt6.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout, QPushButton
+
 from model.logger_base import log
 from model.conexion import Conexion
 from model.empleado_Dao import EmpleadoDao
@@ -60,12 +61,14 @@ class ReciboSueldo(QWidget):
 
         try:
             datos_empresa = """
+
                DATOS DE LA EMPRESA
              |---------------------------------------------------|---------------------------------------------------|
                NOMBRE DE LA EMPRESA: Team Fortran               Cuit: 9-52634875-0
              |---------------------------------------------------|---------------------------------------------------|
                DIRECCION: Gotan 985
              |---------------------------------------------------|---------------------------------------------------|
+
             """
 
             datos_empleado = f"""
@@ -81,6 +84,7 @@ class ReciboSueldo(QWidget):
 
             sueldo_bruto = float(self.sueldo)
             log.debug(f"Sueldo bruto: {sueldo_bruto}")
+
             antiguedad = sueldo_bruto * 5 / 100
             presentismo = sueldo_bruto * 20 / 100
             jubilacion = sueldo_bruto * 11 / 100
@@ -91,6 +95,7 @@ class ReciboSueldo(QWidget):
             neto_a_cobrar = sub_total - total_deducciones
 
             conceptos = f"""
+
             CONCEPTOS                            REMUNERATIVO                                         DEDUCCIONES                   
             |--------------------------------|------------------------------------------------|----------------------------------------------|
             SUELDO BASICO                            ${self.sueldo}                                                                                
@@ -116,6 +121,7 @@ class ReciboSueldo(QWidget):
             self.label_datos_empleado.show()
             self.label_conceptos.show()
 
+
             self.setStyleSheet("background-color: lightblue;")
 
             self.label_datos_empresa.setText(datos_empresa)
@@ -124,6 +130,7 @@ class ReciboSueldo(QWidget):
             log.debug("Recibo de sueldo generado exitosamente")
         except Exception as e:
             log.error("Se produjo un error al generar el recibo de sueldo:", str(e))
+
 
 
 if __name__ == '__main__':
