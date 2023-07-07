@@ -1,11 +1,8 @@
 import os
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QFrame, QLabel, \
-    QDialog, QGridLayout, QLineEdit
-from PyQt6.QtGui import QColor, QPainter, QBrush, QPen, QFont
-from PyQt6.QtCore import Qt, QSize
-
-
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QFrame, QLabel, QDialog, QGridLayout, QLineEdit
+from PyQt5.QtGui import QColor, QPainter, QBrush, QPen, QFont
+from PyQt5.QtCore import Qt, QSize
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
@@ -70,11 +67,7 @@ class ModaWindow(QDialog):
 
     def calcular_moda(self):
         sueldos = EmpleadoDao.calcular_moda()
-
-
-        moda = max(contador, key=contador.get)
-
-        self.result_label.setText(f"Moda: {moda}")
+        self.result_label.setText(f"Moda: {sueldos}")
 
 
 
@@ -158,8 +151,8 @@ class EstadisticaGUI(QMainWindow):
         # Título
         titulo = QLabel("Estadistica", self)
         titulo.setStyleSheet("font-size: 24px; font-weight: bold;")
-        titulo.setAlignment(Qt.Alignment.AlignCenter)
-        layout.addWidget(titulo)
+        titulo.setAlignment(Qt.AlignCenter)
+        layout.addWidget(titulo) 
 
         # Frame superior
         frame_superior = FancyFrame(self)  # Usamos nuestro FancyFrame en lugar de QFrame
@@ -245,4 +238,5 @@ class EstadisticaGUI(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     gui = EstadisticaGUI()
-    sys.exit(app.exec_())
+    sys.exit(app.exec_())  
+
