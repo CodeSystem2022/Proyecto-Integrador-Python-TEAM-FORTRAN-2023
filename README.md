@@ -1,4 +1,5 @@
 ![Black   Orange Simple Welcome To My Channel Youtube Intro (3)](https://github.com/CodeSystem2022/Proyecto-Integrador-Python-TEAM-FORTRAN-2023/assets/100379618/8339b3cd-6814-464c-b8fc-173ab30276fd)
+
 ## Introduccion
 ¡Bienvenido a nuestro proyecto Registro-Persona! En esta ocasión, nos complace compartir con ustedes un breve resumen de quiénes somos y qué nos hace destacar.
 ## Dinamica
@@ -51,7 +52,7 @@ Inicie el servidor
 ## Support
 
 Para tener asistencia, envíe un correo electrónico a TeamFortan@gmail.com 
-
+<div align="center">
 
 ![Diseño sin título (1)](https://github.com/CodeSystem2022/Proyecto-Integrador-Python-TEAM-FORTRAN-2023/assets/100379618/6e86c830-549e-40eb-b28f-9a04f46f7593)
 
