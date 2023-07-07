@@ -3,6 +3,8 @@ from PyQt6.QtWidgets import QApplication, QWidget
 from menuOpcionesGUI import Ui_Form
 import registroPersona
 
+from estadisticaDeSueldos.diseñoEstadistica import EstadisticaGUI
+
 
 class Ui_iniciar(QWidget):
     def __init__(self):

@@ -1,7 +1,13 @@
-import subprocess
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
+
 from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox
 from formulario import Ui_MainWindowfrom
 from model.empleado_Dao import EmpleadoDao
+
 
 
 class Formulario(QMainWindow, Ui_MainWindowfrom):
