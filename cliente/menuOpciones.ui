@@ -14,7 +14,25 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 26, 255, 255), stop:1 rgba(255, 255, 255, 255));</string>
+   <string notr="true">QFrame {
+background-color: rgb(0, 206, 151);
+border-radius: 20%;
+}
+QPushButton{
+background-color: rgb(61, 61, 61);
+border-top-left-radius: 20px;
+border-bottom-left-radius: 20px;
+color: rgb(0, 0, 0);
+font: 77.10px &quot;Arial Black&quot;;
+}
+
+QPushButton:hover {
+background-color: rgb(0, 0, 0);
+border-top-left-radius: 20px;
+border-bottom-left-radius: 20px;
+color: rgb(255, 255, 255);
+font: 77.10px &quot;Arial Black&quot;;
+}</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -24,6 +42,9 @@
      <width>311</width>
      <height>421</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <property name="text">
     <string/>
@@ -37,7 +58,7 @@
     <rect>
      <x>80</x>
      <y>120</y>
-     <width>171</width>
+     <width>161</width>
      <height>31</height>
     </rect>
    </property>
@@ -48,89 +69,23 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton{
-background-color: rgb(0, 85, 255);
-border-top-left-radius: 20px;
-border-bottom-left-radius: 20px;
-color: rgb(0, 0, 0);
-font: 77.10px &quot;Arial Black&quot;;
-}
-
-QPushButton:hover {
-background-color: rgb(0, 0, 0);
-border-top-left-radius: 20px;
-border-bottom-left-radius: 20px;
-color: rgb(255, 255, 255);
-font: 77.10px &quot;Arial Black&quot;;
-}
-</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>REGISTRAR PERSONAL</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="bt_categoria">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>170</y>
-     <width>141</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>40</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{
-background-color: rgb(0, 85, 255);
-border-top-left-radius: 20px;
-border-bottom-left-radius: 20px;
-color: rgb(0, 0, 0);
-font: 77.10px &quot;Arial Black&quot;;
-}
-
-QPushButton:hover {
-background-color: rgb(0, 0, 0);
-border-top-left-radius: 20px;
-border-bottom-left-radius: 20px;
-color: rgb(255, 255, 255);
-font: 77.10px &quot;Arial Black&quot;;
-}
-</string>
-   </property>
-   <property name="text">
-    <string>CATEGORIA</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="bt_estadistica">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>230</y>
+     <x>80</x>
+     <y>170</y>
      <width>131</width>
      <height>24</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton{
-background-color: rgb(0, 85, 255);
-border-top-left-radius: 20px;
-border-bottom-left-radius: 20px;
-color: rgb(0, 0, 0);
-font: 77.10px &quot;Arial Black&quot;;
-}
-
-QPushButton:hover {
-background-color: rgb(0, 0, 0);
-border-top-left-radius: 20px;
-border-bottom-left-radius: 20px;
-color: rgb(255, 255, 255);
-font: 77.10px &quot;Arial Black&quot;;
-}
+    <string notr="true">
 </string>
    </property>
    <property name="text">
@@ -160,28 +115,14 @@ color: rgb(0, 0, 0);</string>
   <widget class="QPushButton" name="pushButton_4">
    <property name="geometry">
     <rect>
-     <x>164</x>
-     <y>310</y>
+     <x>100</x>
+     <y>240</y>
      <width>101</width>
      <height>24</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton{
-background-color: rgb(0, 85, 255);
-border-top-left-radius: 20px;
-border-bottom-left-radius: 20px;
-color: rgb(0, 0, 0);
-font: 77.10px &quot;Arial Black&quot;;
-}
-
-QPushButton:hover {
-background-color: rgb(0, 0, 0);
-border-top-left-radius: 20px;
-border-bottom-left-radius: 20px;
-color: rgb(255, 255, 255);
-font: 77.10px &quot;Arial Black&quot;;
-}
+    <string notr="true">
 </string>
    </property>
    <property name="text">
