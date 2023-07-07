@@ -3,7 +3,9 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
 from PyQt6.QtCore import Qt
 from diseñoRegistroPersonaPy import Ui_MainWindow
 import menuOpciones
-from model.empleado_Dao import EmpleadoDao, crear_tabla, Empleado
+
+from model.empleado_Dao import EmpleadoDao, Empleado
+
 
 
 class Iniciar(QMainWindow, Ui_MainWindow):
@@ -73,8 +75,9 @@ class Iniciar(QMainWindow, Ui_MainWindow):
             categoria = self.ventana.reg_categoria.text()
             sueldo = int(self.ventana.reg_sueldo.text())
 
-            empleado = Empleado(nombre, apellido, dni, cuit, categoria, sueldo)  # Crear instancia de Empleado
-            EmpleadoDao.insertar(empleado)  # Pasar la instancia de Empleado como argumento
+
+            empleado = Empleado(nombre, apellido, dni, cuit, categoria, sueldo)
+            EmpleadoDao.insertar(empleado)
             self.ventana.reg_nombre.clear()
             self.ventana.reg_apellido.clear()
             self.ventana.reg_dni.clear()
@@ -95,7 +98,13 @@ class Iniciar(QMainWindow, Ui_MainWindow):
             sueldo = float(self.ventana.act_sueldo.text().replace(',', '.'))
 
             empleado = Empleado(nombre, apellido, dni, cuit, categoria, sueldo)
-            EmpleadoDao.actualizar(empleado)
+
+            print(empleado)
+            try:
+                EmpleadoDao.actualizar(empleado)
+            except Exception as e:
+                print("Error : ", str(e))
+
 
             self.ventana.act_nombre.clear()
             self.ventana.act_apellido.clear()
@@ -111,15 +120,15 @@ class Iniciar(QMainWindow, Ui_MainWindow):
     def buscarActualizarEmpleado(self):
         try:
             dniBuscado = self.ventana.act_buscar.text()
-            print("Valor de dniBuscado:", dniBuscado)  # Agrega esta línea de depuración
+            print("Valor de dniBuscado:", dniBuscado)
             empleado = EmpleadoDao.buscar_por_dni(dniBuscado)
             if empleado:
-                self.ventana.act_nombre.setText(empleado.nombre)
+                self.ventana.act_nombre.setText(str(empleado.nombre))
                 self.ventana.act_apellido.setText(empleado.apellido)
-                self.ventana.act_dni.setText(empleado.dni)
-                self.ventana.act_cuit.setText(empleado.cuit)
+                self.ventana.act_dni.setText(str(empleado.dni))
+                self.ventana.act_cuit.setText(str(empleado.cuit))
                 self.ventana.act_categoria.setText(empleado.categoria)
-                self.ventana.act_sueldo.setText(str(empleado.sueldo))  # Convertir a cadena de texto
+                self.ventana.act_sueldo.setText(str(empleado.sueldo))
         except Exception as e:
             print("Error al actualizar empleado:", str(e))
 
@@ -138,7 +147,8 @@ class Iniciar(QMainWindow, Ui_MainWindow):
                 tabla.setItem(0, 4, QTableWidgetItem(empleado.categoria))
                 tabla.setItem(0, 5, QTableWidgetItem(str(empleado.sueldo)))
         except Exception as e:
-         print("Error al eliminar1 empleado:", str(e))
+            print("Error al eliminar1 empleado:", str(e))
+
 
     def botonEliminarEmpleado(self):
         try:
@@ -158,7 +168,8 @@ class Iniciar(QMainWindow, Ui_MainWindow):
                 self.ventana.eliminar_buscar.setText('')
                 self.seccionMostrarBaseDatos()
         except Exception as e:
-         print("Error al eliminar2 empleado:", str(e))
+            print("Error al eliminar2 empleado:", str(e))
+
 
 
 if __name__ == '__main__':

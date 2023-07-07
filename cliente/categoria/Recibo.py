@@ -1,6 +1,5 @@
 import sys
 from PyQt6.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout, QPushButton
-
 from model.logger_base import log
 from model.conexion import Conexion
 from model.empleado_Dao import EmpleadoDao

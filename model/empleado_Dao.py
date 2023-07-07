@@ -53,17 +53,24 @@ class EmpleadoDao:
 
     @classmethod
     def actualizar(cls, empleado):
-        # Método para actualizar un empleado en la base de datos
-        Empleado.validar_dni(empleado.dni)
-        Empleado.validar_nombre(empleado.nombre)
-        Empleado.validar_apellido(empleado.apellido)
-        Empleado.validar_sueldo(empleado.sueldo)
-        with CursorDelPool() as cursor:
-            valores = (empleado.nombre, empleado.apellido, empleado.dni, empleado.cuit,
-                        empleado.categoria, empleado.sueldo)
-            cursor.execute(cls._ACTUALIZAR, valores)
-            log.debug(f'Empleado actualizado {empleado}')
-            return cursor.rowcount
+        try:
+            # Método para actualizar un empleado en la base de datos
+            Empleado.validar_dni(empleado.dni)
+            Empleado.validar_nombre(empleado.nombre)
+            Empleado.validar_apellido(empleado.apellido)
+            Empleado.validar_sueldo(empleado.sueldo)
+            with CursorDelPool() as cursor:
+                valores = (empleado.nombre, empleado.apellido, empleado.dni, empleado.cuit,
+                           empleado.categoria, empleado.sueldo)
+
+                print("Consulta de actualización:", cls._ACTUALIZAR)
+                print("Valores a actualizar:", valores)
+
+                cursor.execute(cls._ACTUALIZAR, valores)
+                log.debug(f'Empleado actualizado {empleado}')
+                return cursor.rowcount
+        except Exception as e:
+            print("Error de actualización", e)
 
     @classmethod
     def eliminar(cls, empleado):
