@@ -69,7 +69,7 @@ class EmpleadoDao:
     def eliminar(cls, empleado):
         # Método para eliminar un empleado de la base de datos
         with CursorDelPool() as cursor:
-            valores = (empleado.dni)
+            valores = (str(empleado.dni),)
             cursor.execute(cls._ELIMINAR, valores)
             log.debug(f'Empleado eliminado {empleado}')
             return cursor.rowcount
@@ -154,4 +154,5 @@ def crear_tabla():
 
 
 if __name__ == '__main__':
+    crear_tabla()
     EmpleadoDao.mostrar()
