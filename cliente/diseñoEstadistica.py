@@ -3,7 +3,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QFrame, QLabel, QDialog, QGridLayout, QLineEdit
 from PyQt5.QtGui import QColor, QPainter, QBrush, QPen, QFont
 from PyQt5.QtCore import Qt, QSize
-
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
 from model.empleado_Dao import EmpleadoDao
