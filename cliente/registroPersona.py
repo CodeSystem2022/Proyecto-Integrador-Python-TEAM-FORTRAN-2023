@@ -3,7 +3,9 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
 from PyQt6.QtCore import Qt
 from diseñoRegistroPersonaPy import Ui_MainWindow
 import menuOpciones
+
 from model.empleado_Dao import EmpleadoDao, Empleado
+
 
 
 class Iniciar(QMainWindow, Ui_MainWindow):
@@ -73,6 +75,7 @@ class Iniciar(QMainWindow, Ui_MainWindow):
             categoria = self.ventana.reg_categoria.text()
             sueldo = int(self.ventana.reg_sueldo.text())
 
+
             empleado = Empleado(nombre, apellido, dni, cuit, categoria, sueldo)
             EmpleadoDao.insertar(empleado)
             self.ventana.reg_nombre.clear()
@@ -95,11 +98,13 @@ class Iniciar(QMainWindow, Ui_MainWindow):
             sueldo = float(self.ventana.act_sueldo.text().replace(',', '.'))
 
             empleado = Empleado(nombre, apellido, dni, cuit, categoria, sueldo)
+
             print(empleado)
             try:
                 EmpleadoDao.actualizar(empleado)
             except Exception as e:
                 print("Error : ", str(e))
+
 
             self.ventana.act_nombre.clear()
             self.ventana.act_apellido.clear()
@@ -144,6 +149,7 @@ class Iniciar(QMainWindow, Ui_MainWindow):
         except Exception as e:
             print("Error al eliminar1 empleado:", str(e))
 
+
     def botonEliminarEmpleado(self):
         try:
             tabla = self.ventana.tabla_eliminar
@@ -163,6 +169,7 @@ class Iniciar(QMainWindow, Ui_MainWindow):
                 self.seccionMostrarBaseDatos()
         except Exception as e:
             print("Error al eliminar2 empleado:", str(e))
+
 
 
 if __name__ == '__main__':
