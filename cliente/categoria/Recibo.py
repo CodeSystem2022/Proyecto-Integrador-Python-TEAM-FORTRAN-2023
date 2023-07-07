@@ -1,5 +1,6 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout, QLineEdit, QPushButton
+#from PyQt6.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout, QLineEdit, QPushButton
+from PyQt6.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout, QLineEdit, QPushButton
 from model.logger_base import log
 from model.conexion import Conexion
 from model.empleado_Dao import EmpleadoDao
@@ -54,95 +55,95 @@ class ReciboSueldo(QWidget):
             "background-color: darkblue; color: white;")  # color boton, color fondo y texto
 
     def obtener_recibo(self):
-            # Conexión a la base de datos
-            conn = Conexion.obtenerConexion()
-            cursor = conn.cursor()
+        # Conexión a la base de datos
+        conn = Conexion.obtenerConexion()
+        cursor = conn.cursor()
 
-            # Obtener el número de DNI ingresado por el usuario
-            numero_dni = self.input_dni.text()
+        # Obtener el número de DNI ingresado por el usuario
+        numero_dni = self.input_dni.text()
 
-            # Consulta para obtener los datos del empleado
-            cursor.execute("SELECT * FROM Personal WHERE dni = %s", (numero_dni,))
-            empleado = cursor.fetchone()
+        # Consulta para obtener los datos del empleado
+        cursor.execute("SELECT * FROM Personal WHERE dni = %s", (numero_dni,))
+        empleado = cursor.fetchone()
 
-            # Cerrar conexión
-            cursor.close()
-            Conexion.liberarConexion(conn)
+        # Cerrar conexión
+        cursor.close()
+        Conexion.liberarConexion(conn)
 
-            if empleado:
-                nombre, apellido, dni, cuit, categoria, sueldo = empleado
+        if empleado:
+            nombre, apellido, dni, cuit, categoria, sueldo = empleado
 
-                datos_empresa = f"""
-                   DATOS DE LA EMPRESA
-                 |---------------------------------------------------|---------------------------------------------------|
-                   NOMBRE DE LA EMPRESA: Team Fortran               Cuit: 9-52634875-0
-                 |---------------------------------------------------|---------------------------------------------------|
-                   DIRECCION: Gotan 985
-                 |---------------------------------------------------|---------------------------------------------------|
-                  """
+            datos_empresa = f"""
+               DATOS DE LA EMPRESA
+             |---------------------------------------------------|---------------------------------------------------|
+               NOMBRE DE LA EMPRESA: Team Fortran               Cuit: 9-52634875-0
+             |---------------------------------------------------|---------------------------------------------------|
+               DIRECCION: Gotan 985
+             |---------------------------------------------------|---------------------------------------------------|
+              """
 
-                # Datos del empleado
-                datos_empleado = f"""
-                  DATOS DE LOS EMPLEADOS
-                |----------------------------------------------------|---------------------------------------------------|
-                  APELLIDO: {apellido}                                  NOMBRE :  {nombre}
-                |----------------------------------------------------|---------------------------------------------------|
-                  DNI: {dni}                                            CUIL: {cuit}
-                |----------------------------------------------------|---------------------------------------------------|
-                  CATEGORIA: {categoria}                                SUELDO BASICO: ${sueldo}
-                |----------------------------------------------------|---------------------------------------------------|
-                """
+            # Datos del empleado
+            datos_empleado = f"""
+              DATOS DE LOS EMPLEADOS
+            |----------------------------------------------------|---------------------------------------------------|
+              APELLIDO: {apellido}                                  NOMBRE :  {nombre}
+            |----------------------------------------------------|---------------------------------------------------|
+              DNI: {dni}                                            CUIL: {cuit}
+            |----------------------------------------------------|---------------------------------------------------|
+              CATEGORIA: {categoria}                                SUELDO BASICO: ${sueldo}
+            |----------------------------------------------------|---------------------------------------------------|
+            """
 
-                # Conceptos y montos
-                sueldo_bruto = float(sueldo)
-                antiguedad = sueldo_bruto * 5 / 100
-                presentismo = sueldo_bruto * 20 / 100
-                jubilacion = sueldo_bruto * 11 / 100
-                obra_social = sueldo_bruto * 3 / 100
-                ley19032 = sueldo_bruto * 3 / 100
-                sub_total = sueldo_bruto + antiguedad + presentismo
-                total_deducciones = jubilacion + obra_social + ley19032
-                neto_a_cobrar = sub_total - total_deducciones
+            # Conceptos y montos
+            sueldo_bruto = float(sueldo)
+            antiguedad = sueldo_bruto * 5 / 100
+            presentismo = sueldo_bruto * 20 / 100
+            jubilacion = sueldo_bruto * 11 / 100
+            obra_social = sueldo_bruto * 3 / 100
+            ley19032 = sueldo_bruto * 3 / 100
+            sub_total = sueldo_bruto + antiguedad + presentismo
+            total_deducciones = jubilacion + obra_social + ley19032
+            neto_a_cobrar = sub_total - total_deducciones
 
-                conceptos = f"""
-                  CONCEPTOS                            REMUNERATIVO                                         DEDUCCIONES                   
-                |--------------------------------|------------------------------------------------|----------------------------------------------|
-                  SUELDO BASICO                            ${sueldo}                                                                                
-                |--------------------------------|------------------------------------------------|                                                                
-                  ANTIGUEDAD                                ${antiguedad}                                                                            
-                |--------------------------------|------------------------------------------------|                                                                  
-                  PRESENTISMO                               ${presentismo}                                                                           
-                |--------------------------------|------------------------------------------------|----------------------------------------------|                                
-                  JUBILACION                                                                                           ${jubilacion} 
-                |--------------------------------|------------------------------------------------|----------------------------------------------|                                               
-                  OBRA SOCIAL                                                                                        ${obra_social}                               
-                |--------------------------------|------------------------------------------------|----------------------------------------------|                        
-                  LEY 19032                                                                                             ${ley19032} 
-                |--------------------------------|------------------------------------------------|----------------------------------------------|
-                                                          TOTAL REMUNERATIVO: {sub_total}            TOTAL DEDUCCIONES: {total_deducciones} 
-                |--------------------------------|------------------------------------------------------------------------------------------------|
-                                                          TOTAL NETO A COBRAR: {neto_a_cobrar}    
-                |--------------------------------|------------------------------------------------------------------------------------------------|                                        
-                """
+            conceptos = f"""
+              CONCEPTOS                            REMUNERATIVO                                         DEDUCCIONES                   
+            |--------------------------------|------------------------------------------------|----------------------------------------------|
+              SUELDO BASICO                            ${sueldo}                                                                                
+            |--------------------------------|------------------------------------------------|                                                                
+              ANTIGUEDAD                                ${antiguedad}                                                                            
+            |--------------------------------|------------------------------------------------|                                                                  
+              PRESENTISMO                               ${presentismo}                                                                           
+            |--------------------------------|------------------------------------------------|----------------------------------------------|                                
+              JUBILACION                                                                                           ${jubilacion} 
+            |--------------------------------|------------------------------------------------|----------------------------------------------|                                               
+              OBRA SOCIAL                                                                                        ${obra_social}                               
+            |--------------------------------|------------------------------------------------|----------------------------------------------|                        
+              LEY 19032                                                                                             ${ley19032} 
+            |--------------------------------|------------------------------------------------|----------------------------------------------|
+                                                      TOTAL REMUNERATIVO: {sub_total}            TOTAL DEDUCCIONES: {total_deducciones} 
+            |--------------------------------|------------------------------------------------------------------------------------------------|
+                                                      TOTAL NETO A COBRAR: {neto_a_cobrar}    
+            |--------------------------------|------------------------------------------------------------------------------------------------|                                        
+            """
 
-                # Oculta las etiquetas
-                #self.label_mensaje.hide()
-                #self.input_dni.hide()
-                self.btn_obtener_recibo.hide()
-                self.label_datos_empresa.show()
-                self.label_datos_empleado.show()
-                self.label_conceptos.show()
+            # Oculta las etiquetas
+            #self.label_mensaje.hide()
+            #self.input_dni.hide()
+            self.btn_obtener_recibo.hide()
+            self.label_datos_empresa.show()
+            self.label_datos_empleado.show()
+            self.label_conceptos.show()
 
-                # Cambia estilo a fondo azul claro para mostrar el recibo
-                self.setStyleSheet("background-color: lightblue;")
+            # Cambia estilo a fondo azul claro para mostrar el recibo
+            self.setStyleSheet("background-color: lightblue;")
 
-                # Actualiza las etiquetas con los datos obtenidos
-                self.label_datos_empresa.setText(datos_empresa)
-                self.label_datos_empleado.setText(datos_empleado)
-                self.label_conceptos.setText(conceptos)
+            # Actualiza las etiquetas con los datos obtenidos
+            self.label_datos_empresa.setText(datos_empresa)
+            self.label_datos_empleado.setText(datos_empleado)
+            self.label_conceptos.setText(conceptos)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     recibo = ReciboSueldo()
     recibo.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
