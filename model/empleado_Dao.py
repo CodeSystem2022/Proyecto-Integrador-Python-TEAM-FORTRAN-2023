@@ -1,10 +1,10 @@
 import os
 import statistics
 import sys
-from logger_base import log
+from model.logger_base import log
 from database.empleado import Empleado
-from conexion import Conexion
-from cursor_del_pool import CursorDelPool
+from model.conexion import Conexion
+from model.cursor_del_pool import CursorDelPool
 
 # Obtener la ruta base del proyecto
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -151,3 +151,7 @@ def crear_tabla():
         with conexion.cursor() as cursor:
             cursor.execute(query)
             log.debug('Tabla empleado creada')
+
+
+if __name__ == '__main__':
+    EmpleadoDao.mostrar()
