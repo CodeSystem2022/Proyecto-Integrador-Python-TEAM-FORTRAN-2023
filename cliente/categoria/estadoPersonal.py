@@ -5,7 +5,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.
 
 
 from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox
-from Recibo import ReciboSueldo
 from formulario import Ui_MainWindowfrom
 from model.empleado_Dao import EmpleadoDao
 
@@ -28,21 +27,32 @@ class Formulario(QMainWindow, Ui_MainWindowfrom):
     # Funciones
     def search_data(self):
         dni_a_buscar = self.in_dni.text()
-        empleado = EmpleadoDao.obtener_empleado_por_dni(dni_a_buscar)
+        empleado = EmpleadoDao.buscar_por_dni(dni_a_buscar)
 
-        if empleado is not None:
-            # Otros campos de la interfaz
-            recibo = ReciboSueldo(empleado)
-            recibo.show()
-        else:
-            QMessageBox.warning(self, "Error", "No se encontró un empleado con el DNI proporcionado.")
-            self.clear_data()
+
+
+
+def llamarRecibo():
+    subprocess.run(['python', 'Recibo.py'])
+
+
+if __name__ == '__name__':
+
+    llamarRecibo()
 
     def clear_data(self):
         self.in_dni.clear()
+
 
 if __name__ == '__main__':
     app = QApplication([])
     window = Formulario()
     window.show()
     app.exec()
+
+
+
+
+
+
+
