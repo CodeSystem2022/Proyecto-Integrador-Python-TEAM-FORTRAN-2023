@@ -85,8 +85,7 @@ font: 77.10px &quot;Arial Black&quot;;
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">
-</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>ESTADISTICA</string>
@@ -122,8 +121,7 @@ color: rgb(0, 0, 0);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">
-</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>SALIR</string>
